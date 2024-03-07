@@ -62,6 +62,9 @@ flutter:
   assets:
     - assets/
   fonts:
+      - family: Bookman Old Style
+        fonts:
+          - asset: fonts/Bookman Old Style Regular.ttf
       - family: Quicksand
         fonts:
           - asset: fonts/Quicksand-Regular.ttf
