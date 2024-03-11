@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/nexus.dart';
+import 'package:lovelacevault/pages/library/work_detail.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -85,7 +86,7 @@ class LoginPage extends StatelessWidget {
                     width: 300, height: 50), // Adjust width as needed
                 child: ElevatedButton(
                   onPressed: () {
-                  _navigateToNexusPage(context);
+                  _navigateToTestPage(context);
                 },
                   style: ElevatedButton.styleFrom(
                     shadowColor: Colors.black,
@@ -120,6 +121,24 @@ void _navigateToNexusPage(BuildContext context) {
     context,
     PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const Nexus(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
+    ),
+  );
+}
+
+void _navigateToTestPage(BuildContext context) {
+  Navigator.push(
+    context,
+    PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const WorkDetail(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
