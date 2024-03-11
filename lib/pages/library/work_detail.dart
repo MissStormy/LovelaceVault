@@ -171,6 +171,9 @@ class _WorkDetailState extends State<WorkDetail> {
               ),
               
             ),
+            //-------------------
+            // FULL TEXT OF WORK
+            //-------------------
             Container(
               padding: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
