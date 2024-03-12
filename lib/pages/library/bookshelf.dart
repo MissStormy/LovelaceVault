@@ -12,23 +12,36 @@ class _BookshelfState extends State<Bookshelf> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Image(
+          image: AssetImage('assets/appbar_bg.jpg'),
+          fit: BoxFit.cover,
+        ), 
          leading: Image.asset('assets/lovelace_Logo.png'),
         title: Text('Bookshelf', style: TextStyle(fontFamily: 'Bookman Old Style'),),
       
       ),
       body: SingleChildScrollView(
         child: Column(
+          children: [
+            SizedBox(height: 20.0),
           //-----------
           // SEARCH BAR
           //-----------
-
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: SearchBar()
+          ),
           //------------
           // COLLECTIONS
           //------------
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
 
+          )
           //--------------------
           // LIST OF SAVED WORKS
           //--------------------
+          ]
         ),
       ),
     );

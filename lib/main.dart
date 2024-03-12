@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //Load the actual theme
     //final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-    return MaterialApp(//theme: actualTheme, 
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      //theme: actualTheme, 
     home: const LoginPage());
   }
 }
