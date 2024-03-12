@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/nexus.dart';
+import 'package:lovelacevault/pages/library/bookshelf.dart';
 import 'package:lovelacevault/pages/library/work_detail.dart';
 
 class LoginPage extends StatelessWidget {
