@@ -5,8 +5,11 @@ class WorkCard extends StatelessWidget {
   // VARIABLES
   //----------
   final String image;
+  final String typeOfWork;
   final String workTitle;
   final String author;
+  final String resume;
+  final String id;
   final String bytes;
   final VoidCallback showWork;
 
@@ -15,7 +18,11 @@ class WorkCard extends StatelessWidget {
       required this.image,
       required this.workTitle,
       required this.author,
-      required this.bytes, required this.showWork});
+      required this.bytes,
+      required this.showWork,
+      required this.typeOfWork,
+      required this.resume,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,6 @@ class WorkCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            
             blurRadius: 7,
             offset: Offset(4, 8),
           ),
@@ -38,66 +44,91 @@ class WorkCard extends StatelessWidget {
         children: [
           Container(
               width: 70,
-              height: 70,
+              height: 100,
               margin: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
               child: Image.asset(image)),
-          SizedBox(
-            width: 10.0,
-          ),
-          Column(
+          
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                typeOfWork,
+                style: TextStyle(fontFamily: 'Bookman Old Style', fontSize: 10),
+              ),
               Text(
                 workTitle,
                 style: TextStyle(fontFamily: 'Bookman Old Style', fontSize: 20),
               ),
-              SizedBox(height: 10.0,),
+              //SizedBox(height: 5.0,),
               Text(
                 author,
                 style: TextStyle(fontFamily: 'Bookman Old Style', fontSize: 15),
+              ),
+              Container(
+                width: 150,
+                height: 50,
+                child: Text(
+                  resume,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  softWrap: false,
+                  style:
+                      TextStyle(fontFamily: 'Bookman Old Style', fontSize: 10),
+                ),
+              ),
+
+              Text(
+                id,
+                style: TextStyle(fontFamily: 'Bookman Old Style', fontSize: 10),
               )
             ],
           ),
+          ),
+          
           SizedBox(
-            width: 80.0,
+            width: 10.0,
           ),
           Container(
-            padding: EdgeInsets.all(5.0),
-            /* decoration: BoxDecoration(
+              //margin: EdgeInsets.symmetric(horizontal: 10.0),
+              padding: EdgeInsets.all(5.0),
+              /* decoration: BoxDecoration(
               
               border: Border.all(
                 color: Colors.black
               )
             ), */
-            child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Ink(
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                      onPressed: () => showWork(), child: Text('See work')),
+                  /* Ink(
                 decoration: const ShapeDecoration(
                   color: Colors.grey,
                   shape: CircleBorder(),
                 ),
                 child:
                     IconButton(onPressed: () => showWork(), icon: Icon(Icons.visibility)),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: 20,
-                    height: 20,
-                    child: Image.asset('assets/byte_full.png'),
+              ), */
+                  SizedBox(
+                    height: 10.0,
                   ),
-                  Text(bytes)
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        child: Image.asset('assets/byte_full.png'),
+                      ),
+                      Text(bytes)
+                    ],
+                  )
                 ],
-              )
-            ],
-          )
-          )
-          
+              ))
         ],
       ),
     );
