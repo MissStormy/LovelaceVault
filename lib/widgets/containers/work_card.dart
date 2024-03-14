@@ -9,7 +9,7 @@ class WorkCard extends StatelessWidget {
   final String workTitle;
   final String author;
   final String resume;
-  final String id;
+  final String isbn;
   final String bytes;
   final VoidCallback showWork;
 
@@ -22,7 +22,7 @@ class WorkCard extends StatelessWidget {
       required this.showWork,
       required this.typeOfWork,
       required this.resume,
-      required this.id});
+      required this.isbn});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class WorkCard extends StatelessWidget {
               ),
 
               Text(
-                id,
+                isbn,
                 style: TextStyle(fontFamily: 'Bookman Old Style', fontSize: 10),
               )
             ],
