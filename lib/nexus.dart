@@ -102,7 +102,7 @@ class _NexusState extends State<Nexus> {
       //-----------------------------------------------------
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
-        //color: actualTheme.colorScheme.secondary,
+        color: actualTheme.colorScheme.secondary,
         shape: const CircularNotchedRectangle(),
         notchMargin: 6,
         shadowColor: actualTheme.colorScheme.background,
@@ -115,7 +115,7 @@ class _NexusState extends State<Nexus> {
                   _selectedIndex = 6;
                 });
               },
-              icon: const Icon(Icons.calendar_month),
+              icon: Image.asset('assets/minerva2.png'),
               color: Colors.white,
             ),
             IconButton(
@@ -124,7 +124,7 @@ class _NexusState extends State<Nexus> {
                   _selectedIndex = 1;
                 });
               },
-              icon: const Icon(Icons.calendar_month),
+              icon: const Icon(Icons.auto_stories),
               color: Colors.white,
             ),
             const SizedBox(width: 5),
@@ -136,7 +136,7 @@ class _NexusState extends State<Nexus> {
                     _selectedIndex = 2;
                   });
                 },
-                icon: const Icon(Icons.list),
+                icon: const Icon(Icons.bookmarks),
                 color: Colors.white,
               ),
             ),
@@ -146,7 +146,7 @@ class _NexusState extends State<Nexus> {
                   _selectedIndex = 4;
                 });
               },
-              icon: const Icon(Icons.calendar_month),
+              icon: Image.asset('assets/profile.png'),
               color: Colors.white,
             ),
           ],

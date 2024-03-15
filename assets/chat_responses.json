@@ -1,0 +1,29 @@
+{
+    "questions": [
+      {
+        "question": "What is the APA 7 citation format?",
+        "answer": "The APA 7 citation format is a style guide for writing and formatting academic papers established by the American Psychological Association. It includes rules for citing sources within the text and in the reference list at the end of the paper."
+      },
+      {
+        "question": "How do I cite a book in APA 7 format?",
+        "answer": "To cite a book in APA 7 format, you typically include the author's last name, the publication year, the title of the book, and other relevant information. For example: Author, A. A. (Year). Title of book. Publisher."
+      },
+      {
+        "question": "What is the ISO 690 citation style?",
+        "answer": "ISO 690 is an international standard for bibliographic referencing in academic papers. It provides guidelines for citing various types of sources, such as books, journal articles, and websites."
+      },
+      {
+        "question": "How do I format a journal article citation in ISO 690 style?",
+        "answer": "To format a journal article citation in ISO 690 style, you typically include the author's name, the title of the article, the name of the journal, the volume and issue numbers, the publication year, and page numbers. For example: Author, A. A. (Year). Title of article. Title of Journal, volume(issue), page range."
+      },
+      {
+        "question": "Can you provide an example of an MLA citation?",
+        "answer": "Sure! An example of an MLA citation for a book is: Author Last Name, First Name. Title of Book. Publisher, Publication Date."
+      },
+      {
+        "question": "What is the Chicago citation style?",
+        "answer": "The Chicago citation style is a method of citation used in history and other humanities fields. It has two main documentation systems: notes and bibliography (commonly used in literature, history, and the arts) and author-date (used in the sciences)."
+      }
+    ]
+  }
+  

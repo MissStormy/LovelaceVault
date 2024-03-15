@@ -15,17 +15,10 @@ class _ProfileState extends State<Profile> {
      final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Image(
-          image: AssetImage('assets/appbar_bg.jpg'),
-          fit: BoxFit.cover,
-        ), 
-         leading: Image.asset('assets/lovelace_Logo.png'),
+        backgroundColor: actualTheme.colorScheme.secondary, 
+         leading: Image.asset('assets/logoIn.png'),
         title: Text('Profile', style: TextStyle(fontFamily: 'Bookman Old Style'),),
-        actions: [
-          IconButton(
-            onPressed: () {}, 
-            icon: Icon(Icons.settings))
-        ],
+        
       ),
       body: SingleChildScrollView(
         child: Column(

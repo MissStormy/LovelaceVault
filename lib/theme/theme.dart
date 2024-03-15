@@ -24,7 +24,7 @@ class ThemeLoader with ChangeNotifier {
         _darkTheme = false;
         break;
       case 1:
-        _theme = _myLightTheme();
+        _theme = _myDarkTheme();
         _lightTheme = false;
         _darkTheme = true;
         break;

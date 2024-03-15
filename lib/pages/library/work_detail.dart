@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
 import 'package:lovelacevault/widgets/buttons/byte.dart';
 import 'package:lovelacevault/widgets/buttons/expandable_fab.dart';
+import 'package:provider/provider.dart';
 
 class WorkDetail extends StatefulWidget {
   const WorkDetail({super.key});
@@ -12,9 +14,12 @@ class WorkDetail extends StatefulWidget {
 class _WorkDetailState extends State<WorkDetail> {
   @override
   Widget build(BuildContext context) {
+     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
+   
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: actualTheme.colorScheme.secondary, 
         title: Center(
             child: Text(
           'Details',

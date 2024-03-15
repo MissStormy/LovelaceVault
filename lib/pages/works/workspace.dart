@@ -16,11 +16,8 @@ class _WorkspaceState extends State<Workspace> {
      final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Image(
-          image: AssetImage('assets/appbar_bg.jpg'),
-          fit: BoxFit.cover,
-        ), 
-         leading: Image.asset('assets/lovelace_Logo.png'),
+        backgroundColor: actualTheme.colorScheme.secondary, 
+         leading: Image.asset('assets/logoIn.png'),
         title: Text('Workspace', style: TextStyle(fontFamily: 'Bookman Old Style'),),
       
       ),

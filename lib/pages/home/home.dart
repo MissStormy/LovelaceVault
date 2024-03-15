@@ -20,16 +20,17 @@ class _HomeState extends State<Home> {
     final Resource resource = Resource();
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Image(
+        /*flexibleSpace: Image(
           image: AssetImage('assets/appbar_bg.jpg'),
           fit: BoxFit.cover,
-        ), 
-        leading: Image.asset('assets/lovelace_Logo.png'),
+        ),*/
+        backgroundColor: actualTheme.colorScheme.secondary, 
+        leading: Image.asset('assets/logoIn.png'),
         title: Text('Home', style: TextStyle(fontFamily: 'Bookman Old Style'),),
         actions: [
           IconButton(
             onPressed: () => widget.showSettings(), 
-            icon: Icon(Icons.account_circle_outlined))
+            icon: Icon(Icons.settings))
         ],
       ),
       

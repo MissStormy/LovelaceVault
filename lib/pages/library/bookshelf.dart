@@ -15,11 +15,8 @@ class _BookshelfState extends State<Bookshelf> {
      final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Image(
-          image: AssetImage('assets/appbar_bg.jpg'),
-          fit: BoxFit.cover,
-        ), 
-         leading: Image.asset('assets/lovelace_Logo.png'),
+        backgroundColor: actualTheme.colorScheme.secondary,  
+         leading: Image.asset('assets/logoIn.png'),
         title: Text('Bookshelf', style: TextStyle(fontFamily: 'Bookman Old Style'),),
       
       ),
