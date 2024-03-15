@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:lovelacevault/theme/theme.dart';
 import 'package:provider/provider.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class Minerva extends StatefulWidget {
+  const Minerva({super.key});
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<Minerva> createState() => _MinervaState();
 }
 
-class _SettingsState extends State<Settings> {
+class _MinervaState extends State<Minerva> {
+ 
   @override
   Widget build(BuildContext context) {
      final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;

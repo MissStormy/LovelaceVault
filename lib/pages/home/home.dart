@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
 import 'package:lovelacevault/widgets/containers/work_card.dart';
 import 'package:lovelacevault/models/resource.dart';
+import 'package:provider/provider.dart';
 class Home extends StatefulWidget {
   final VoidCallback showWork;
-  final VoidCallback showProfile;
-  const Home({super.key, required this.showWork, required this.showProfile});
+  final VoidCallback showSettings;
+  const Home({super.key, required this.showWork, required this.showSettings});
 
   @override
   State<Home> createState() => _HomeState();
@@ -14,6 +16,7 @@ class _HomeState extends State<Home> {
   
   @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     final Resource resource = Resource();
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +28,7 @@ class _HomeState extends State<Home> {
         title: Text('Home', style: TextStyle(fontFamily: 'Bookman Old Style'),),
         actions: [
           IconButton(
-            onPressed: () => widget.showProfile(), 
+            onPressed: () => widget.showSettings(), 
             icon: Icon(Icons.account_circle_outlined))
         ],
       ),

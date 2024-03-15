@@ -93,6 +93,23 @@ class Resource{
     return resources;
   }
 
+  Future<List<Resource>> searchResources(String query) async {
+    List<Resource> matchingResources = [];
+    DBHelper dbHelper = DBHelper();
+    List<Map<String, dynamic>> resourcesDB = await dbHelper.dbQuery('resource');
+    
+    for (int i = 0; i < resourcesDB.length; i++) {
+      Resource resource = Resource.fromMap(resourcesDB[i]);
+      // Check if the query matches any field of the resource
+      if (resource.title.toLowerCase().contains(query.toLowerCase()) ||
+          resource.author.toLowerCase().contains(query.toLowerCase()) ||
+          resource.isbn.toLowerCase().contains(query.toLowerCase())) {
+        matchingResources.add(resource);
+      }
+    }
+    return matchingResources;
+  }
+
   saveResource(Resource resource) async {
     DBHelper dbHelper = DBHelper();
     dbHelper.dbInsert('resource', resource.toMap());

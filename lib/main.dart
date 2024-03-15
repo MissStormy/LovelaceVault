@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/pages/login/login.dart';
-
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 //
 //   =================
 //   ||             ||    Autor: Lara Rodriguez
@@ -11,7 +12,13 @@ import 'package:lovelacevault/pages/login/login.dart';
 //   //_____________\\
 //
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeLoader(0)),
+      ],
+      child: MyApp(),
+      ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,10 +28,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Load the actual theme
-    //final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //theme: actualTheme, 
+      theme: actualTheme, 
     home: const LoginPage());
   }
 }

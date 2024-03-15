@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class Bookshelf extends StatefulWidget {
   const Bookshelf({super.key});
@@ -10,6 +12,7 @@ class Bookshelf extends StatefulWidget {
 class _BookshelfState extends State<Bookshelf> {
   @override
   Widget build(BuildContext context) {
+     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Image(

@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:lovelacevault/nexus.dart';
 import 'package:lovelacevault/pages/library/bookshelf.dart';
 import 'package:lovelacevault/pages/library/work_detail.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
+      backgroundColor: actualTheme.colorScheme.background,
         body: Stack(
       fit: StackFit.expand,
       children: [
@@ -57,7 +61,9 @@ class LoginPage extends StatelessWidget {
                   _navigateToNexusPage(context);
                 },
                   style: ElevatedButton.styleFrom(
-                    shadowColor: Colors.black,
+                    shadowColor: actualTheme.colorScheme.background,
+                    foregroundColor: actualTheme.colorScheme.onError,
+                    backgroundColor: actualTheme.colorScheme.surface,
                     elevation: 20.0,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -90,7 +96,9 @@ class LoginPage extends StatelessWidget {
                   _navigateToTestPage(context);
                 },
                   style: ElevatedButton.styleFrom(
-                    shadowColor: Colors.black,
+                    shadowColor: actualTheme.colorScheme.background,
+                    foregroundColor: actualTheme.colorScheme.onError,
+                    backgroundColor: actualTheme.colorScheme.surface,
                     elevation: 20.0,
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(

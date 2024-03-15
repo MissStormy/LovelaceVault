@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class Workspace extends StatefulWidget {
-  const Workspace({super.key});
+  final VoidCallback addWork;
+  const Workspace({super.key, required this.addWork});
 
   @override
   State<Workspace> createState() => _WorkspaceState();
@@ -10,6 +13,7 @@ class Workspace extends StatefulWidget {
 class _WorkspaceState extends State<Workspace> {
   @override
   Widget build(BuildContext context) {
+     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Image(
@@ -43,6 +47,10 @@ class _WorkspaceState extends State<Workspace> {
           //--------------------
           ]
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => widget.addWork(),
+        child: Icon(Icons.add),
       ),
     );
   }

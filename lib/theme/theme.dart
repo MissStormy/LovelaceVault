@@ -19,7 +19,7 @@ class ThemeLoader with ChangeNotifier {
     //lock active theme
     switch (theme) {
       case 0:
-        _theme = _myDarkTheme();
+        _theme = _myLightTheme();
         _lightTheme = true;
         _darkTheme = false;
         break;
@@ -41,9 +41,9 @@ class ThemeLoader with ChangeNotifier {
     //lock active theme
     if (value) {
       //modify value of dark theme for our app
-      _theme = _myDarkTheme();
-    } else {
       _theme = _myLightTheme();
+    } else {
+      _theme = _myDarkTheme();
     }
     notifyListeners();
   }
@@ -54,9 +54,9 @@ class ThemeLoader with ChangeNotifier {
     //lock active theme
     if (value) {
       //modify value of light theme for our app
-      _theme = _myLightTheme();
-    } else {
       _theme = _myDarkTheme();
+    } else {
+      _theme = _myLightTheme();
     }
     notifyListeners();
   }
