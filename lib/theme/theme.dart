@@ -29,7 +29,7 @@ class ThemeLoader with ChangeNotifier {
         _darkTheme = true;
         break;
       default:
-        _theme = _myDarkTheme();
+        _theme = _myLightTheme();
         _darkTheme = true;
         break;
     }

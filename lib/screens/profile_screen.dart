@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -11,17 +12,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(40.0), // Esquina inferior derecha redondeada
-          ),
-        ),
-        backgroundColor: Colors.transparent, // Hace que el AppBar sea transparente
-        elevation: 0,
+      appBar: const CustomRoundedAppBar(
+        showBackButton: true,
       ),
       body: Container(
+        margin: EdgeInsets.only(left: 10.0),
         decoration: BoxDecoration(
           color: Colors.grey.shade200, 
           borderRadius: BorderRadius.only(
@@ -29,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             bottomLeft: Radius.circular(40.0)
           ),
         ),
-        child: Center(
+        child: const Center(
           child: Text(
             'Contenido de la pantalla de inicio',
             style: TextStyle(

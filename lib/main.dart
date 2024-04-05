@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 void main() {
   runApp( MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeLoader(1)),
+        ChangeNotifierProvider(create: (_) => ThemeLoader(0)),
       ],
       child: MyApp(),
       ));

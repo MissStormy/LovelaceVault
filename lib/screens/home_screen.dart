@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/screens/profile_screen.dart';
+import 'package:lovelacevault/widgets/textfield/custom_searchbar.dart';
+import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,51 +14,67 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Bienvenido, user',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
+        appBar: CustomRoundedAppBar(
+          line1: 'Bienvenido de vuelta,',
+          line2: 'User',
+          action: IconButton(
             onPressed: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
             },
             icon: Image.asset('assets/profile.png'),
           ),
-        ],
-
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight:
-                Radius.circular(40.0), // Esquina inferior derecha redondeada
-          ),
         ),
-        backgroundColor:
-            Colors.transparent, // Hace que el AppBar sea transparente
-        elevation: 0,
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0),
-              bottomLeft: Radius.circular(40.0)),
-        ),
-        child: Center(
-          child: Text(
-            'Contenido de la pantalla de inicio',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
+        body: Column(
+          children: [
+            SizedBox(
+              height: 5.0,
+            ),
+            Container(
+                margin: EdgeInsets.only(left: 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40.0),
+                      bottomLeft: Radius.circular(40.0)),
+                ),
+                child: CustomSearchBar(
+                  onSearch: (query) {
+                    print('Realizar búsqueda con query: $query');
+                  },
+                )),
+            SizedBox(
+              height: 5.0,
+            ),
+            Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.only(right: 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(40.0),
+                    bottomRight: Radius.circular(40.0),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        'Holi',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    // Aquí puedes agregar más contenido si es necesario
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+            
+          ],
+        ));
   }
 }
