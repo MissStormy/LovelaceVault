@@ -25,6 +25,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
       ),
       child: Container(
         color: actualTheme.colorScheme.primary,
+        
         child: SafeArea(
           child: Container(
             height: appBarHeight,
