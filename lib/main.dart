@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lovelacevault/nexus.dart';
 import 'package:lovelacevault/screens/login/login_screen.dart';
 import 'package:lovelacevault/theme/theme.dart';
 import 'package:provider/provider.dart';

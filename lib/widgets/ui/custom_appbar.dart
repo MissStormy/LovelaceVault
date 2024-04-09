@@ -6,14 +6,17 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
   final String? line2;
   final double appBarHeight;
   final Widget? action;
-  final bool showBackButton; // Nuevo parámetro para mostrar o no la flecha de retroceso
+  final bool showBackButton; 
+  final Widget? notificationButton;// Nuevo parámetro para mostrar o no la flecha de retroceso
 
   const CustomRoundedAppBar({
     this.line1,
     this.line2,
     this.appBarHeight = 80.0, // Valor predeterminado para la altura del AppBar
     this.action,
-    this.showBackButton = false, // Valor predeterminado para no mostrar la flecha de retroceso
+    this.showBackButton = false,
+    this.notificationButton, 
+    // Valor predeterminado para no mostrar la flecha de retroceso
   });
 
   @override
@@ -22,6 +25,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
     return ClipRRect(
       borderRadius: BorderRadius.only(
         bottomRight: Radius.circular(40.0),
+        bottomLeft: Radius.circular(40.0),
       ),
       child: Container(
         color: actualTheme.colorScheme.primary,
@@ -41,7 +45,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                   ),
                 if (line1 != null || line2 != null) // Verifica si alguno de los textos no es nulo
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0), // Ajusta el espacio a la izquierda del texto
+                    padding: const EdgeInsets.only(left: 25.0), // Ajusta el espacio a la izquierda del texto
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -59,13 +63,21 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                             line2!,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0, // Tamaño del texto aumentado
+                              fontSize: 20.0, // Tamaño del texto aumentado
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                       ],
                     ),
                   ),
+                  notificationButton != null ? Padding( // Verifica si el botón de notificaciones no es nulo
+                  padding: const EdgeInsets.only(left: 120.0), // Ajusta el espacio a ambos lados del botón de notificaciones
+                  child: SizedBox(
+                    width: 50.0, // Ancho del botón de notificaciones
+                    height: 50.0, // Alto del botón de notificaciones
+                    child: notificationButton, // Muestra el botón de notificaciones
+                  ),
+                ) : SizedBox(),
                 action != null ? Padding(
                   padding: const EdgeInsets.only(right: 8.0), // Ajusta el espacio a la derecha del icono
                   child: SizedBox(

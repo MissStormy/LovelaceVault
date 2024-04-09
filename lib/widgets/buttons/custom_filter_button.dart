@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
-class CustomFilterButton extends StatelessWidget {
+class CustomFilterButton extends StatefulWidget {
   final String text;
-  final Color color;
+  
   final VoidCallback onTap;
 
   const CustomFilterButton({
     required this.text,
-    required this.color,
+    
     required this.onTap,
   });
 
   @override
+  _CustomFilterButtonState createState() => _CustomFilterButtonState();
+}
+
+class _CustomFilterButtonState extends State<CustomFilterButton> {
+  bool _isSelected = false;
+
+  @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        setState(() {
+          _isSelected = !_isSelected; // Cambia el estado de selección
+        });
+        widget.onTap(); // Ejecuta la función onTap proporcionada
+      },
       child: Container(
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(20.0), 
-          boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5), // Color de la sombra
-                      spreadRadius: 2, // Extensión de la sombra
-                      blurRadius: 5, // Difuminado de la sombra
-                      offset:
-                          Offset(0, 3), // Desplazamiento de la sombra en x y y
-                    ),
-                  ],
+          color: _isSelected ?  actualTheme.colorScheme.background : null , // Cambia el color de fondo al ser seleccionado
+          borderRadius: BorderRadius.circular(20.0),
+          
         ),
-        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), 
+        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Text(
-          text,
+          widget.text,
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 14.0, // Reduce el tamaño del texto
+            color: actualTheme.colorScheme.onError,
+            fontSize: 14.0,
             fontWeight: FontWeight.bold,
           ),
         ),
