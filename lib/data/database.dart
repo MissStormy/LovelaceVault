@@ -64,8 +64,8 @@ class DBHelper {
         "CREATE TABLE IF NOT EXISTS resources(id INTEGER PRIMARY KEY, title TEXT, author TEXT, type TEXT, bytes INTEGER, summary TEXT, imagePath TEXT, location TEXT)");
       
       await db.execute(
-        "INSERT INTO resources(id, title, author, type, bytes, summary, imagePath, location) VALUES(1, 'El horror de Dunwich', 'François Baranger', 'Libro', 1234, 'assets/covers/dunwich.jpg', 'Un libro ilustrado de Lovecraft.La pequeña villa de Dunwich vive aterrorizada por un ser monstruoso y deforme. Pero Wilbur Whateley no sólo tiene un aspecto grotesco, sino que también guarda un oscuro secreto: el Necronomicón, el libro maldito. Si alguien lo descubre y lo usa para invocar las fuerzas del mal que retiene, el mundo conocerá su apocalipsis.', 'FNAC')");
-      await db.execute("INSERT INTO resources(id, title, author, type, bytes, summary, imagePath, location) VALUES(2, 'Horrorstör', 'Grady Hendrix', 'Libro', 4321, 'assets/covers/horrorstor.jpg', 'Lorem fugiat ad adipisicing ut commodo mollit nulla anim fugiat labore laborum ullamco.', 'FNAC')");
+        "INSERT INTO resources(id, title, author, type, bytes, summary, imagePath, location) VALUES(1, 'El horror de Dunwich', 'François Baranger', 'Libro', 1234, 'Un libro ilustrado de Lovecraft.La pequeña villa de Dunwich vive aterrorizada por un ser monstruoso y deforme. Pero Wilbur Whateley no sólo tiene un aspecto grotesco, sino que también guarda un oscuro secreto: el Necronomicón, el libro maldito. Si alguien lo descubre y lo usa para invocar las fuerzas del mal que retiene, el mundo conocerá su apocalipsis.', 'assets/covers/dunwich.jpg', 'FNAC')");
+      await db.execute("INSERT INTO resources(id, title, author, type, bytes, summary, imagePath, location) VALUES(2, 'Horrorstör', 'Grady Hendrix', 'Libro', 4321, 'Lorem fugiat ad adipisicing ut commodo mollit nulla anim fugiat labore laborum ullamco.', 'assets/covers/horrorstor.jpg', 'FNAC')");
       
      });
     print('BD inicializada');

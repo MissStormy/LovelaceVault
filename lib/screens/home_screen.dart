@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Resource resource = Resource();
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: CustomRoundedAppBar(
@@ -183,7 +184,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    child: Column(
+                    child: FutureBuilder<List<Resource>>(
+                          future: resource.getResources(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else if (snapshot.hasError) {
+                              return Center(
+                                child: Text("Error: ${snapshot.error}"),
+                              );
+                            } else {
+                              final resources = snapshot.data!;
+                              return ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: resources.length,
+                                itemBuilder: (context, index) {
+                                  final resource = resources[index];
+                                  return CustomResource(
+                                    title: resource.title,
+                                    author: resource.author,
+                                    type: resource.type,
+                                    bytes: resource.bytes,
+                                    isChecked: true,
+                                    imagePath: resource.imagePath,
+                                    summary: resource.summary,
+                                  );
+                                },
+                              );
+                            }
+                          },
+                        )
+                    /* child: Column(
                       children: [
                         SizedBox(height: 10.0),
                         ListView.builder(
@@ -196,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ],
-                    ),
+                    ), */
                   ),
                 ),
               ),

@@ -108,7 +108,7 @@ class CustomResource extends StatelessWidget {
                   ),
                   SizedBox(height: 4.0),
                   Container(
-                    width: MediaQuery.of(context).size.width - 300, // Ancho máximo del texto
+                    width: MediaQuery.of(context).size.width - 200, // Ancho máximo del texto
                     child: Text(
                       summary,
                       style: TextStyle(

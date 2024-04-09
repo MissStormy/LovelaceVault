@@ -71,7 +71,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                     ),
                   ),
                   notificationButton != null ? Padding( // Verifica si el botón de notificaciones no es nulo
-                  padding: const EdgeInsets.only(left: 120.0), // Ajusta el espacio a ambos lados del botón de notificaciones
+                  padding: const EdgeInsets.only(left: 50.0), // Ajusta el espacio a ambos lados del botón de notificaciones
                   child: SizedBox(
                     width: 50.0, // Ancho del botón de notificaciones
                     height: 50.0, // Alto del botón de notificaciones
