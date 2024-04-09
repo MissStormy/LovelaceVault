@@ -15,45 +15,41 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-    return ClipRRect(
-      
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(40.0),
-        topRight: Radius.circular(40.0),
-      ),
-      child: Container(
-        
-        height: navBarHeight, // Altura personalizada del BottomNavigationBar
-        color: actualTheme.colorScheme.primary, // Color de fondo del BottomNavigationBar
-        child: BottomNavigationBar(
-          
-          currentIndex: currentIndex,
-          onTap: onTap,
-          showSelectedLabels: false, // Oculta los labels seleccionados
-          showUnselectedLabels: false, // Oculta los labels no seleccionados
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: actualTheme.colorScheme.onBackground,),
-              label: 'Home',
-              backgroundColor: actualTheme.colorScheme.primary,
-              
-            ),
-            BottomNavigationBarItem(
-            icon: Image.asset('assets/logoIn.png', width: 24, height: 24,),
-            label: 'Editor',
-            backgroundColor: actualTheme.colorScheme.primary
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Ajusta el espacio horizontal aquí
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(80.0),
+        child: Container(
+          height: navBarHeight,
+          color: actualTheme.colorScheme.primary,
+          child: BottomNavigationBar(
+            currentIndex: currentIndex,
+            onTap: onTap,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home, color: actualTheme.colorScheme.onBackground),
+                label: 'Home',
+                backgroundColor: actualTheme.colorScheme.primary,
+              ),
+              BottomNavigationBarItem(
+                icon: Image.asset('assets/logoIn.png', width: 24, height: 24),
+                label: 'Editor',
+                backgroundColor: actualTheme.colorScheme.primary,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.book, color: actualTheme.colorScheme.onBackground),
+                label: 'Bookshelf',
+                backgroundColor: actualTheme.colorScheme.primary,
+              ),
+              BottomNavigationBarItem(
+                icon: Image.asset('assets/minerva2.png', width: 24, height: 24),
+                label: 'Minerva',
+                backgroundColor: actualTheme.colorScheme.primary,
+              ),
+            ],
           ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book, color: actualTheme.colorScheme.onBackground),
-              label: 'Bookshelf',
-              backgroundColor: actualTheme.colorScheme.primary
-            ),
-            BottomNavigationBarItem(
-            icon: Image.asset('assets/minerva2.png', width: 24, height: 24),
-            label: 'Minerva',
-            backgroundColor: actualTheme.colorScheme.primary
-          ),
-          ],
         ),
       ),
     );

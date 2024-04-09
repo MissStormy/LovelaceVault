@@ -9,27 +9,88 @@ import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<CustomResource> allBooks = [
+    CustomResource(
+      title: "El horror de Dunwich",
+      author: "François Baranger",
+      type: "Libro",
+      bytes: 1234,
+      isChecked: false,
+      imagePath: "assets/covers/dunwich.jpg",
+      summary: 'aaaaaaaaaaaa',
+    ),
+    CustomResource(
+      title: "Titulo insulso",
+      author: "Autor insulso",
+      type: "Libro",
+      bytes: 1234,
+      isChecked: false,
+      imagePath: "assets/book.jpeg",
+      summary: '',
+    ),
+    CustomResource(
+      title: "Titulo insulso",
+      author: "Autor insulso",
+      type: "Libro",
+      bytes: 1234,
+      isChecked: false,
+      imagePath: "assets/book.jpeg",
+      summary: '',
+    ),
+  ];
 
+  List<CustomResource> filteredBooks = [];
+
+  void filterBooks(String query) {
+    setState(() {
+      filteredBooks = allBooks.where((book) {
+        final title = book.title.toLowerCase();
+        final author = book.author.toLowerCase();
+        return title.contains(query.toLowerCase()) ||
+            author.contains(query.toLowerCase());
+      }).toList();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    filteredBooks = List.from(allBooks);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Resource resource = Resource();
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: CustomRoundedAppBar(
         line1: 'Bienvenido de vuelta,',
         line2: 'User',
         notificationButton: IconButton(
-          // Botón de notificaciones opcional
           onPressed: () {
-            // Acción al presionar el botón de notificaciones
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return Container(
+                  color: Colors.black54, // Fondo semitransparente
+                  child: ListView.builder(
+                    itemCount: 10, // Coloca aquí la cantidad de notificaciones
+                    itemBuilder: (context, index) {
+                      // Placeholder de notificación
+                      return ListTile(
+                        title: Text('Notificación $index'),
+                      );
+                    },
+                  ),
+                );
+              },
+            );
           },
           icon: Icon(Icons.notifications), // Icono de notificaciones
         ),
@@ -49,38 +110,34 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 5.0,
           ),
           Container(
-              margin: EdgeInsets.only(left: 10.0),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40.0),
-                    bottomLeft: Radius.circular(40.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5), // Color de la sombra
-                    spreadRadius: 2, // Extensión de la sombra
-                    blurRadius: 5, // Difuminado de la sombra
-                    offset:
-                        Offset(0, 3), // Desplazamiento de la sombra en x y y
-                  ),
-                ],
+            margin: EdgeInsets.only(left: 10.0),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40.0),
+                bottomLeft: Radius.circular(40.0),
               ),
-              child: CustomSearchBar(
-                onSearch: (query) {
-                  print('Realizar búsqueda con query: $query');
-                },
-              )),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: CustomSearchBar(
+              onSearch: filterBooks,
+            ),
+          ),
           SizedBox(
             height: 10.0,
           ),
-          // Sidescroll buttons "filter"
-
           SizedBox(
             height: 10.0,
           ),
           Expanded(
             child: Container(
-              
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.only(
@@ -111,61 +168,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         SizedBox(height: 10.0),
-                        FutureBuilder(future: 
-                        resource.getResources(), 
-                        builder: (context, AsyncSnapshot<List<Resource>> snapshot){
-                          if(snapshot.hasData){
-                            return ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (context, index){
-                                return CustomResource(
-                                  title: snapshot.data![index].title, 
-                                  author: snapshot.data![index].author, 
-                                  type: snapshot.data![index].type, 
-                                  bytes: snapshot.data![index].bytes, 
-                                  isChecked: true, 
-                                  imagePath: snapshot.data![index].imagePath, 
-                                  summary: snapshot.data![index].summary);
-                              },
-                            );
-                          }else {
-                          return const Center(
-                            //While the DB loads, display a progress indicator
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                        })
-                        
-                        //Lista de libros y recursos
-
-                        /* CustomResource(
-                          title: "El horror de Dunwich",
-                          author: "François Baranger",
-                          type: "Libro",
-                          bytes: "1234",
-                          isChecked: false,
-                          imagePath: "assets/covers/dunwich.jpg", summary: '',
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: filteredBooks.length,
+                          itemBuilder: (context, index) {
+                            final book = filteredBooks[index];
+                            return book;
+                          },
                         ),
-                        SizedBox(height: 10.0),
-                        CustomResource(
-                          title: "Titulo insulso",
-                          author: "Autor insulso",
-                          type: "Libro",
-                          bytes: "1234",
-                          isChecked: false,
-                          imagePath: "assets/book.jpeg", summary: '',
-                        ),
-                        SizedBox(height: 10.0),
-                        CustomResource(
-                          title: "Titulo insulso",
-                          author: "Autor insulso",
-                          type: "Libro",
-                          bytes: "1234",
-                          isChecked: false,
-                          imagePath: "assets/book.jpeg", summary: '',
-                        ) */
                       ],
                     ),
                   ),
@@ -175,36 +186,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SingleChildScrollView(
             padding: EdgeInsets.symmetric(vertical: 5.0),
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    onPressed: (){}, 
-                    icon: Icon(Icons.tune)),
-                  CustomFilterButton(
-                      text: "Tesis",
-                      
-                      onTap: () {}),
-                  SizedBox(width: 2.0),
-                  CustomFilterButton(
-                      text: "Libro",
-                      
-                      onTap: () {}),
-                  SizedBox(width: 2.0),
-                  CustomFilterButton(
-                      text: "Recurso",
-                      
-                      onTap: () {}),
-                  SizedBox(width: 2.0),
-                  CustomFilterButton(
-                      text: "Otros",
-                      
-                      onTap: () {}),
-                ],
-              ),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
+                CustomFilterButton(text: "Tesis", onTap: () {}),
+                SizedBox(width: 2.0),
+                CustomFilterButton(text: "Libro", onTap: () {}),
+                SizedBox(width: 2.0),
+                CustomFilterButton(text: "Recurso", onTap: () {}),
+                SizedBox(width: 2.0),
+                CustomFilterButton(text: "Otros", onTap: () {}),
+              ],
             ),
+          ),
         ],
       ),
     );

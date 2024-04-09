@@ -37,7 +37,8 @@ class Resource {
     type = (map['type'] != null) ? map['type'] : '';
     summary = (map['summary'] != null) ? map['summary'] : '';
     imagePath = (map['imagePath'] != null) ? map['imagePath'] : '';
-    bytes = (map['bytes'] != null) ? map['bytes'] : 0;
+    bytes = (map['bytes'] != null) ? int.parse(map['bytes'].toString()) : 0;
+
   }
 
   //MAP

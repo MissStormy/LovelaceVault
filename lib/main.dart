@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lovelacevault/screens/login/login_screen.dart';
 import 'package:lovelacevault/theme/theme.dart';
 import 'package:provider/provider.dart';
+import 'package:lovelacevault/api/server.dart';
 //
 //   =================
 //   ||             ||    Autor: Lara Rodriguez
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 //   //_____________\\
 //
 void main() {
+  //startServer();
   runApp( MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeLoader(0)),

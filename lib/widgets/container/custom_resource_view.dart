@@ -43,7 +43,7 @@ class CustomResource extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.all(10.0),
+        margin: EdgeInsets.all(5.0),
         //padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey), // Borde fino
@@ -63,9 +63,9 @@ class CustomResource extends StatelessWidget {
                 child: Image.asset(imagePath, fit: BoxFit.cover),
               ),
             ),
-            SizedBox(width: 10.0),
+            SizedBox(width: 5.0),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

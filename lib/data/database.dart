@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 //helper para la base de datos
 class DBHelper {
   static Database? _database;
-  static const String dbName = "medguardian.db";
+  static const String dbName = "lv.db";
 
   //iniciar la base de datos
   Future<Database?> get database async {
@@ -61,7 +61,7 @@ class DBHelper {
         onCreate: (Database db, int version) async {
       print('inicializando BD');
       await db.execute(
-        "CREATE TABLE IF NOT EXIST resources(id INTEGER PRIMARY KEY, title TEXT, author TEXT, type TEXT, bytes INTEGER, summary TEXT, imagePath TEXT, location TEXT)");
+        "CREATE TABLE IF NOT EXISTS resources(id INTEGER PRIMARY KEY, title TEXT, author TEXT, type TEXT, bytes INTEGER, summary TEXT, imagePath TEXT, location TEXT)");
       
       await db.execute(
         "INSERT INTO resources(id, title, author, type, bytes, summary, imagePath, location) VALUES(1, 'El horror de Dunwich', 'François Baranger', 'Libro', 1234, 'assets/covers/dunwich.jpg', 'Un libro ilustrado de Lovecraft.La pequeña villa de Dunwich vive aterrorizada por un ser monstruoso y deforme. Pero Wilbur Whateley no sólo tiene un aspecto grotesco, sino que también guarda un oscuro secreto: el Necronomicón, el libro maldito. Si alguien lo descubre y lo usa para invocar las fuerzas del mal que retiene, el mundo conocerá su apocalipsis.', 'FNAC')");
@@ -69,6 +69,7 @@ class DBHelper {
       
      });
     print('BD inicializada');
+    print(database);
     return database;
   }
 }
