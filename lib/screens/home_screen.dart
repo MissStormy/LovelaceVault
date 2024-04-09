@@ -8,6 +8,12 @@ import 'package:lovelacevault/widgets/textfield/custom_searchbar.dart';
 import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
+enum ResourceType {
+  Libro,
+  Tesis,
+  Recurso,
+  Otros,
+}
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key});
 
@@ -29,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     CustomResource(
       title: "Titulo insulso",
       author: "Autor insulso",
-      type: "Libro",
+      type: "Tesis",
       bytes: 1234,
       isChecked: false,
       imagePath: "assets/book.jpeg",
@@ -38,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     CustomResource(
       title: "Titulo insulso",
       author: "Autor insulso",
-      type: "Libro",
+      type: "Recurso",
       bytes: 1234,
       isChecked: false,
       imagePath: "assets/book.jpeg",
@@ -56,6 +62,18 @@ class _HomeScreenState extends State<HomeScreen> {
         return title.contains(query.toLowerCase()) ||
             author.contains(query.toLowerCase());
       }).toList();
+    });
+  }
+  void filterBooksByType(ResourceType type) {
+    setState(() {
+      filteredBooks = allBooks.where((book) => book.type == type.toString().split('.').last).toList();
+    });
+  }
+  bool _isFilterExpanded = false;
+
+  void toggleFilterExpansion() {
+    setState(() {
+      _isFilterExpanded = !_isFilterExpanded;
     });
   }
 
@@ -184,26 +202,52 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
-                CustomFilterButton(text: "Tesis", onTap: () {}),
-                SizedBox(width: 2.0),
-                CustomFilterButton(text: "Libro", onTap: () {}),
-                SizedBox(width: 2.0),
-                CustomFilterButton(text: "Recurso", onTap: () {}),
-                SizedBox(width: 2.0),
-                CustomFilterButton(text: "Otros", onTap: () {}),
-              ],
-            ),
-          ),
+                IconButton(
+                  onPressed: toggleFilterExpansion,
+                  icon: Icon(Icons.tune),
+                ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  width: _isFilterExpanded ? MediaQuery.of(context).size.width - 50 : 0,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        CustomFilterButton(
+                          text: "Tesis",
+                          onTap: () {
+                            filterBooksByType(ResourceType.Tesis);
+                          },
+                        ),
+                        SizedBox(width: 2.0),
+                        CustomFilterButton(
+                          text: "Libro",
+                          onTap: () {
+                            filterBooksByType(ResourceType.Libro);
+                          },
+                        ),
+                        SizedBox(width: 2.0),
+                        CustomFilterButton(
+                          text: "Recurso",
+                          onTap: () {
+                            filterBooksByType(ResourceType.Recurso);
+                          },
+                        ),
+                        SizedBox(width: 2.0),
+                        CustomFilterButton(
+                          text: "Otros",
+                          onTap: () {
+                            filterBooksByType(ResourceType.Otros);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
         ],
       ),
-    );
+    ]));
   }
 }
