@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/data/usuario.dart';
 import 'package:lovelacevault/nexus.dart';
 import 'package:lovelacevault/widgets/buttons/custom_login_button.dart';
 import 'package:lovelacevault/widgets/textfield/custom_textfield.dart';
@@ -59,8 +60,33 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _usernameController, hintText: 'Username'),
               CustomTextField(
                   controller: _passwordController, hintText: 'Password'),
-              CustomLoginButton(text: 'Sign in', onPressed: () {
-                _navigateToNexusPage(context);
+              CustomLoginButton(text: 'Sign in', onPressed: () async{
+               String username = _usernameController.text;
+                String password = _passwordController.text;
+                
+                // Obtiene la lista de usuarios de la base de datos
+                List<Usuario> usuarios = await Usuario().getUsuarios();
+                
+                // Busca si existe un usuario con las credenciales proporcionadas
+                Usuario? usuarioValido;
+                for (var usuario in usuarios) {
+                  if (usuario.username == username && usuario.password == password) {
+                    usuarioValido = usuario;
+                    break;
+                  }
+                }
+
+                if (usuarioValido != null) {
+                  // Si se encontró un usuario con las credenciales, navega a la pantalla Nexus
+                  _navigateToNexusPage(context, usuarioValido);
+                } else {
+                  // Si no se encontró un usuario con las credenciales, muestra un mensaje de error
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Invalid username or password. Please try again.'),
+                    duration: Duration(seconds: 3),
+                    
+                  ));
+                }
               }),
               SizedBox(height: 5.0),
               const Text(
@@ -90,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void _navigateToNexusPage(BuildContext context) {
+void _navigateToNexusPage(BuildContext context, Usuario usuario) {
   Navigator.push(
     context,
     PageRouteBuilder(
