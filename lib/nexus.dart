@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lovelacevault/screens/editor_screen.dart';
+import 'package:lovelacevault/screens/editor/editor_screen.dart';
 import 'package:lovelacevault/screens/home_screen.dart';
 import 'package:lovelacevault/screens/library_screen.dart';
 import 'package:lovelacevault/screens/minerva_screen.dart';
