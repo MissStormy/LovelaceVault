@@ -60,7 +60,10 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _usernameController, hintText: 'Username'),
               CustomTextField(
                   controller: _passwordController, hintText: 'Password'),
-              CustomLoginButton(text: 'Sign in', onPressed: () async{
+                  CustomLoginButton(text: 'Sign in', onPressed: (){
+                    _navigateToNexusPage(context);
+                  
+              /* CustomLoginButton(text: 'Sign in', onPressed: () async{
                String username = _usernameController.text;
                 String password = _passwordController.text;
                 
@@ -86,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     duration: Duration(seconds: 3),
                     
                   ));
-                }
+                } */
               }),
               SizedBox(height: 5.0),
               const Text(
@@ -116,7 +119,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void _navigateToNexusPage(BuildContext context, Usuario usuario) {
+//void _navigateToNexusPage(BuildContext context, Usuario usuario) {
+  void _navigateToNexusPage(BuildContext context) {
   Navigator.push(
     context,
     PageRouteBuilder(
