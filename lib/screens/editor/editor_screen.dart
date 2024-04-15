@@ -88,7 +88,7 @@ class _EditorScreenState extends State<EditorScreen> {
           viewType: ViewType.DAILY,
           toggleViewType: true,
           headerMonthElevation: 10,
-          headerMonthShadowColor: Colors.black26,
+          headerMonthShadowColor: actualTheme.colorScheme.onError,
           headerMonthBackColor: Colors.transparent,
           weekStartDate: weekStart,
           weekEndDate: weekEnd),
@@ -96,7 +96,7 @@ class _EditorScreenState extends State<EditorScreen> {
           compactMode: true,
           dayFontSize: 14.0,
           disableFadeEffect: true,
-          weekDaySelectedColor: const Color(0xff3AC3E2),
+          weekDaySelectedColor: actualTheme.colorScheme.onError,
           differentStyleForToday: true,
           todayBackgroundColor: Colors.black,
           selectedBackgroundColor: const Color(0xff3AC3E2),
@@ -106,7 +106,10 @@ class _EditorScreenState extends State<EditorScreen> {
           monthStringType: MonthStringTypes.FULL,
           backgroundColor: actualTheme.colorScheme.primary,
           headerTextSize: 14,
-          headerTextColor: Colors.black),
+          headerTextColor: actualTheme.colorScheme.onError,
+          navigationColor: actualTheme.colorScheme.onError,
+          calendarIconColor: actualTheme.colorScheme.onError),
+          
       onChangeDateTime: (dateTime) {
         print("Date Change $dateTime");
         selectedDateTime = dateTime;
