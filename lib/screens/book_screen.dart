@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+// ESTA PANTALLA RECOGE LOS DATOS DEL RECURSO ABIERTO
 class BookScreen extends StatelessWidget {
-  final String imagePath; // Ruta de la imagen
+  final String imagePath;
   final String title;
   final String author;
   final String bytes;
@@ -32,7 +32,7 @@ class BookScreen extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.favorite_border),
                     onPressed: () {
-                      // Lógica para cambiar entre corazón relleno y contorno
+                      // TODO: AL PULSAR TIENE QUE CAMBIAR EL DISEÑO DEL ICONO
                     },
                   ),
                   SizedBox(width: 10.0),
@@ -40,14 +40,14 @@ class BookScreen extends StatelessWidget {
                     imagePath,
                     width: 100,
                     height: 150,
-                  ), // Imagen del libro
+                  ), 
                   SizedBox(width: 10.0),
-                  Text(bytes), // Título del libro
+                  Text(bytes), 
                 ],
               ),
               SizedBox(height: 10.0),
               Container(
-                width: MediaQuery.of(context).size.width * 0.8, // Ancho máximo del contenedor
+                width: MediaQuery.of(context).size.width * 0.8, 
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   color: Colors.grey.shade200,
@@ -77,7 +77,7 @@ class BookScreen extends StatelessWidget {
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para expandir el resumen completo
+                        // AL PULSAR, SE EXTENDERA EL TEXTO HASTA EL MAXIMO DE SUS CARACTERES
                       },
                       child: Text('More'),
                     ),
@@ -96,7 +96,7 @@ class BookScreen extends StatelessWidget {
                           IconButton(
                             icon: Icon(Icons.map),
                             onPressed: () {
-                              // Lógica para abrir mapa
+                              // EXPANSION: CREAR UNA PANTALLA MAPS O QUE TE REDIRECCIONE AL MAPS
                             },
                           ),
                         ],

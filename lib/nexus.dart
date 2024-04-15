@@ -16,32 +16,30 @@ class Nexus extends StatefulWidget {
 }
 
 class _NexusState extends State<Nexus> {
-  //-------------------
-  // Variables
-  //-------------------
+  // VARIABLES
   int _selectedIndex = 0;
-  late TextEditingController _controller = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-    //-----------------
-    // Screen Navigator
-    //-----------------
+
+    // SCREEN NAVIGATOR
     final List<Widget> screens = [
-      //-----
-      //  0
-      //-----
+      //  INDEX 0
       HomeScreen(),
+      //  INDEX 1
       EditorScreen(),
+      //  INDEX 2
       BookshelfScreen(),
+      //  INDEX 3
       Minerva(),
+      //  INDEX 4
       ProfileScreen()
     ];
 
     return Scaffold(
-      /* appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ), */
+      // AL IR CAMBIANDO EL SELECTEDINDEX, SE CAMBIA SOLO EL APPBAR Y EL BODY
+      // MEJORANDO EL RENDIMIENTO DE LA APLICACIÓN
       body: screens[_selectedIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _selectedIndex,

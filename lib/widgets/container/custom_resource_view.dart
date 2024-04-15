@@ -26,10 +26,11 @@ class CustomResource extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-
+    // CON EL GESTUREDETECTOR, PODEMOS CONVERTIR EL CONTAINER EN UN BUTTON
     return GestureDetector(
       onTap: () {
-        // Navegar a la pantalla BookScreen y pasar los datos
+
+        // NAVEGAR A BOOKSCREEN Y PASAR DATOS
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -37,7 +38,7 @@ class CustomResource extends StatelessWidget {
               imagePath: imagePath,
               title: title,
               author: author,
-              summary: summary, bytes: ("$bytes"), // Ajusta el resumen según tus datos
+              summary: summary, bytes: ("$bytes"), 
             ),
           ),
         );
@@ -46,8 +47,8 @@ class CustomResource extends StatelessWidget {
         margin: EdgeInsets.all(5.0),
         //padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey), // Borde fino
-          borderRadius: BorderRadius.circular(10.0), // Esquinas redondeadas
+          border: Border.all(color: Colors.grey), 
+          borderRadius: BorderRadius.circular(10.0), 
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,10 +57,10 @@ class CustomResource extends StatelessWidget {
               width: 100,
               height: 150,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0), // Esquinas redondeadas
+                borderRadius: BorderRadius.circular(10.0), 
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0), // Esquinas redondeadas
+                borderRadius: BorderRadius.circular(10.0), 
                 child: Image.asset(imagePath, fit: BoxFit.cover),
               ),
             ),
@@ -72,7 +73,8 @@ class CustomResource extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                      fontSize: 15.0, // Título un poco más grande
+                      color: actualTheme.colorScheme.onError,
+                      fontSize: 15.0, 
                       fontWeight: FontWeight.bold,
                     ),
                     maxLines: 1,
@@ -81,6 +83,7 @@ class CustomResource extends StatelessWidget {
                   Text(
                     author,
                     style: TextStyle(
+                      color: actualTheme.colorScheme.onError,
                       fontSize: 14.0,
                     ),
                     maxLines: 1,
@@ -89,6 +92,7 @@ class CustomResource extends StatelessWidget {
                   Text(
                     type,
                     style: TextStyle(
+                      color: actualTheme.colorScheme.onError,
                       fontSize: 11.0,
                     ),
                     maxLines: 1,
@@ -101,6 +105,7 @@ class CustomResource extends StatelessWidget {
                       Text(
                         ("$bytes"),
                         style: TextStyle(
+                          color: actualTheme.colorScheme.onError,
                           fontSize: 11.0,
                         ),
                       ),
@@ -108,10 +113,11 @@ class CustomResource extends StatelessWidget {
                   ),
                   SizedBox(height: 4.0),
                   Container(
-                    width: MediaQuery.of(context).size.width - 200, // Ancho máximo del texto
+                    width: MediaQuery.of(context).size.width - 200, 
                     child: Text(
                       summary,
                       style: TextStyle(
+                        color: actualTheme.colorScheme.onError,
                         fontSize: 10.0,
                       ),
                       maxLines: 3,

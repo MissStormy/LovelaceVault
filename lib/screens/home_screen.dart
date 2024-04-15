@@ -22,6 +22,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // BUSCADOR (PLACEHOLDER)
+  // TODO: MEJORAR
   List<CustomResource> allBooks = [
     CustomResource(
       title: "El horror de Dunwich",
@@ -51,9 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
       summary: '',
     ),
   ];
-
+  // ARRAY PARA GUARDAR LOS LIBROS FILTRADOS
   List<CustomResource> filteredBooks = [];
-
+  // FILTRADO POR TITULO Y AUTOR
   void filterBooks(String query) {
     setState(() {
       filteredBooks = allBooks.where((book) {
@@ -64,19 +66,21 @@ class _HomeScreenState extends State<HomeScreen> {
       }).toList();
     });
   }
+  // FILTRADO POR TIPO
   void filterBooksByType(ResourceType type) {
     setState(() {
       filteredBooks = allBooks.where((book) => book.type == type.toString().split('.').last).toList();
     });
   }
+  // SITUACION ACTUAL DEL BOTON DE FILTROS
   bool _isFilterExpanded = false;
-
+  // SI EL BOTON NO ESTA EXPANDIDO, EXPANDIR Y VICEVERSA
   void toggleFilterExpansion() {
     setState(() {
       _isFilterExpanded = !_isFilterExpanded;
     });
   }
-
+  // INICIALIZAMOS LAS VARIABLES
   @override
   void initState() {
     super.initState();
@@ -85,7 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // GENERAMOS UNA NUEVA INSTANCIA PARA CARGAR LOS RECURSOS
     final Resource resource = Resource();
+    // CARGAMOS EL PROVIDER DEL TEMA
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Scaffold(
       appBar: CustomRoundedAppBar(
@@ -93,15 +99,16 @@ class _HomeScreenState extends State<HomeScreen> {
         line2: 'User',
         notificationButton: IconButton(
           onPressed: () {
+            // AL PULSAR EL BOTON DE LAS NOTIFICACIONES, SE DESPLIEGA UNA BOTTOM SHEET
             showModalBottomSheet(
               context: context,
               builder: (context) {
                 return Container(
-                  color: Colors.black54, // Fondo semitransparente
+                  color: const Color.fromARGB(137, 253, 244, 244),
                   child: ListView.builder(
-                    itemCount: 10, // Coloca aquí la cantidad de notificaciones
+                    itemCount: 10, 
                     itemBuilder: (context, index) {
-                      // Placeholder de notificación
+                      // PLACEHOLDER
                       return ListTile(
                         title: Text('Notificación $index'),
                       );
@@ -111,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             );
           },
-          icon: Icon(Icons.notifications), // Icono de notificaciones
+          icon: Icon(Icons.notifications), 
         ),
         action: IconButton(
           onPressed: () {
@@ -184,6 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                    // CARGAMOS LOS DATOS DE LA TABLA resources Y LOS PONEMOS EN EL TEMPLATE DE LOS RESOURCES
+                    // EN CASO DE QUE NO CONSIGA CARGAR, O TARDE, APARECERA UN CIRCULO DE CARGA
                     child: FutureBuilder<List<Resource>>(
                           future: resource.getResources(),
                           builder: (context, snapshot) {
@@ -192,11 +201,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               return Center(
                                 child: CircularProgressIndicator(),
                               );
+                            // DETECCION DE ERRORES
                             } else if (snapshot.hasError) {
                               return Center(
                                 child: Text("Error: ${snapshot.error}"),
                               );
                             } else {
+                              //CARGAMOS EL SNAPSHOT
                               final resources = snapshot.data!;
                               return ListView.builder(
                                 shrinkWrap: true,
@@ -209,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     author: resource.author,
                                     type: resource.type,
                                     bytes: resource.bytes,
-                                    isChecked: true,
+                                    isChecked: true, // TODO: CAMBIAR ESTO, YA NO ES NECESARIO
                                     imagePath: resource.imagePath,
                                     summary: resource.summary,
                                   );
@@ -218,26 +229,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
                           },
                         )
-                    /* child: Column(
-                      children: [
-                        SizedBox(height: 10.0),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: filteredBooks.length,
-                          itemBuilder: (context, index) {
-                            final book = filteredBooks[index];
-                            return book;
-                          },
-                        ),
-                      ],
-                    ), */
                   ),
                 ),
               ),
             ),
           ),
           Row(
+            // EL BOTON DE FILTROS PERMITE TOGGLEAR LAS VISTAS DE EXPANDIDO Y CONTRAIDO
               children: [
                 IconButton(
                   onPressed: toggleFilterExpansion,
@@ -245,10 +243,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 AnimatedContainer(
                   duration: Duration(milliseconds: 300),
+                  // TAMAÑO ABIERTO -> PANTALLA -50 : TAMAÑO CERRADO -> 0
                   width: _isFilterExpanded ? MediaQuery.of(context).size.width - 50 : 0,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
+                      // FILTRADO POR TIPO
                       children: [
                         CustomFilterButton(
                           text: "Tesis",

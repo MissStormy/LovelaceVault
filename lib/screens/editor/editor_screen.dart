@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/widgets/container/custom_work.dart';
 import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 
 
@@ -17,7 +18,7 @@ class _EditorScreenState extends State<EditorScreen> {
       //appBar: const CustomRoundedAppBar(),
       body: Column(
         children: [
-          // Calendario de scroll horizontal
+          // TODO: CALENDARIO PARA LLEVAR EL CONTROL DE LOS TRABAJOS
           Container(
             
           ),
@@ -25,9 +26,11 @@ class _EditorScreenState extends State<EditorScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // Espacio para varios recursos (a rellenar)
+                  
                   SizedBox(height: 20),
-                  Placeholder(), // Placeholder para recursos
+                  CustomWork(
+                    name: 'Tesis del necronomicon', 
+                    date: '12/03/12') 
                 ],
               ),
             ),

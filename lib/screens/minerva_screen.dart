@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:lovelacevault/theme/theme.dart';
-
+//EXPANSION: CONVERTIR A MINERVA EN UNA IA
 class Minerva extends StatefulWidget {
   @override
   _MinervaState createState() => _MinervaState();
 }
 
 class _MinervaState extends State<Minerva> {
-  List<Map<String, dynamic>> _messages = []; // Lista de mensajes
-
+  // CARGA DE LISTA DE MENSAJES 
+  List<Map<String, dynamic>> _messages = []; 
+  // LISTA DE PREGUNTAS Y RESPUESTAS
   final List<Map<String, String>> _qaPairs = [
     {'question': 'Hola', 'answer': '¡Hola! ¿En qué puedo ayudarte?'},
     {
@@ -42,14 +43,15 @@ class _MinervaState extends State<Minerva> {
       'answer':
           'Un archivo digital es una colección de documentos o registros almacenados en formato electrónico en medios de almacenamiento digital, como discos duros, servidores en la nube o dispositivos de memoria USB.'
     },
-  ]; // Pares de preguntas y respuestas
-
+  ]; 
+  // MENSAJES DE USUARIO
+  // LEE EL MENSAJE, LO BUSCA ENTRE LAS PREGUNTAS Y RESPUESTAS, Y DEVUELVE UNA RESPUESTA
   void _handleUserMessage(String message) {
     setState(() {
-      // Agregar el mensaje del usuario a la lista de mensajes
+      
       _messages.add({'message': message, 'isMinerva': false});
 
-      // Buscar si la pregunta del usuario coincide con alguna pregunta predefinida
+      // BUSCAR SI LA PREGUNTA DEL USUARIO COINCIDE CON ALGUNA PREGUNTA PREDEFINIDA
       final qaPair = _qaPairs.firstWhere(
         (pair) =>
             pair['question'] != null &&
@@ -57,7 +59,7 @@ class _MinervaState extends State<Minerva> {
         orElse: () => {},
       );
 
-      // Si se encuentra una pregunta coincidente, obtener la respuesta
+      // SI SE ENCUENTRA UNA PREGUNTA COINCIDENTE, OBTIENE LA RESPUESTA Y LA PASA POR PANTALLA 
       if (qaPair != null) {
         _messages.add({'message': qaPair['answer'], 'isMinerva': true});
       } else {
@@ -68,7 +70,7 @@ class _MinervaState extends State<Minerva> {
         });
       }
 
-      // Limpiar el campo de texto después de enviar el mensaje
+      // LIMPIEZA DE TEXTFIELD
       _textController.clear();
     });
   }
@@ -121,6 +123,7 @@ class _MinervaState extends State<Minerva> {
                 ),
               ),
               child: ListView(
+                // SACAMOS LOS DATOS DEL MAP DE MENSAJES
                 children: _messages.map((messageData) {
                   return MessageBubble(
                     message: messageData['message'],
@@ -137,8 +140,12 @@ class _MinervaState extends State<Minerva> {
                 Expanded(
                   child: TextField(
                     controller: _textController,
+                    style: TextStyle(
+                      color: actualTheme.colorScheme.onError
+                    ),
                     decoration: InputDecoration(
                       hintText: 'Escribe un mensaje...',
+                      
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -149,6 +156,7 @@ class _MinervaState extends State<Minerva> {
                 IconButton(
                   icon: Icon(Icons.send),
                   onPressed: () {
+                    // CUANDO SE PULSA EL BOTON DE ENVIAR, SE GUARDA EL MENSAJE Y COMIENZA LA BUSQUEDA DE RESPUESTAS
                     _handleUserMessage(_textController.text);
                   },
                 ),
@@ -160,7 +168,7 @@ class _MinervaState extends State<Minerva> {
     );
   }
 }
-
+// TEMPLATE PARA CADA MENSAJE
 class MessageBubble extends StatelessWidget {
   final String message;
   final bool isMinerva;

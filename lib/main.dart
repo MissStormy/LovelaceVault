@@ -9,7 +9,7 @@ import 'package:lovelacevault/api/server.dart';
 //   ||   </Miss    ||    Alias: Miss Stormy 
 //   ||   Stormy>   ||    App: LovelaceVault
 //   ||             ||    Web: missstormy.neocities.org
-//   =================
+//   =================    Repositorio: https://github.com/MissStormy/LovelaceVault
 //   //_____________\\
 //
 void main() {
