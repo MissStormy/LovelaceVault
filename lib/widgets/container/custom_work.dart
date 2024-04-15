@@ -23,7 +23,7 @@ class CustomWork extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.all(50.0),
+        margin: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10.0),
@@ -74,7 +74,7 @@ class CustomWork extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 80),
+                SizedBox(width: 5),
                 IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
               ],
             )

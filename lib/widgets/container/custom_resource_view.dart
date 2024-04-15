@@ -29,7 +29,6 @@ class CustomResource extends StatelessWidget {
     // CON EL GESTUREDETECTOR, PODEMOS CONVERTIR EL CONTAINER EN UN BUTTON
     return GestureDetector(
       onTap: () {
-
         // NAVEGAR A BOOKSCREEN Y PASAR DATOS
         Navigator.push(
           context,
@@ -38,7 +37,8 @@ class CustomResource extends StatelessWidget {
               imagePath: imagePath,
               title: title,
               author: author,
-              summary: summary, bytes: ("$bytes"), 
+              summary: summary, 
+              bytes: ("$bytes"), 
             ),
           ),
         );
@@ -65,66 +65,68 @@ class CustomResource extends StatelessWidget {
               ),
             ),
             SizedBox(width: 5.0),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: actualTheme.colorScheme.onError,
-                      fontSize: 15.0, 
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    author,
-                    style: TextStyle(
-                      color: actualTheme.colorScheme.onError,
-                      fontSize: 14.0,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    type,
-                    style: TextStyle(
-                      color: actualTheme.colorScheme.onError,
-                      fontSize: 11.0,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.favorite_border),
-                      SizedBox(width: 4.0),
-                      Text(
-                        ("$bytes"),
-                        style: TextStyle(
-                          color: actualTheme.colorScheme.onError,
-                          fontSize: 11.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 4.0),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 200, 
-                    child: Text(
-                      summary,
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
                       style: TextStyle(
                         color: actualTheme.colorScheme.onError,
-                        fontSize: 10.0,
+                        fontSize: 15.0, 
+                        fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 3,
+                      maxLines: 2, // Configura el número máximo de líneas
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                    Text(
+                      author,
+                      style: TextStyle(
+                        color: actualTheme.colorScheme.onError,
+                        fontSize: 14.0,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      type,
+                      style: TextStyle(
+                        color: actualTheme.colorScheme.onError,
+                        fontSize: 11.0,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.favorite_border),
+                        SizedBox(width: 4.0),
+                        Text(
+                          ("$bytes"),
+                          style: TextStyle(
+                            color: actualTheme.colorScheme.onError,
+                            fontSize: 11.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 4.0),
+                    Container(
+                      width: double.infinity, // Asegura que el texto se ajuste al ancho disponible
+                      child: Text(
+                        summary,
+                        style: TextStyle(
+                          color: actualTheme.colorScheme.onError,
+                          fontSize: 10.0,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
