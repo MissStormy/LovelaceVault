@@ -28,7 +28,7 @@ class _NexusState extends State<Nexus> {
       //  INDEX 0
       HomeScreen(),
       //  INDEX 1
-      EditorScreen(),
+      EditorScreen(fileName: '',),
       //  INDEX 2
       BookshelfScreen(),
       //  INDEX 3

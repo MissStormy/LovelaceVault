@@ -4,9 +4,10 @@ import 'package:lovelacevault/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class CustomWork extends StatelessWidget {
-  late String name;
+  late String fileName;
   late String date;
-  CustomWork({required this.name, required this.date});
+
+  CustomWork({required this.fileName, required this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,13 @@ class CustomWork extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // NAVEGAR A WORDSCREEN Y PASAR DATOS
-       /*  Navigator.push(
-            context, MaterialPageRoute(builder: (context) => WordScreen()));
-      */ },
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WordScreen(fileName: fileName),
+          ),
+        );
+      },
       child: Container(
         margin: EdgeInsets.all(50.0),
         decoration: BoxDecoration(
@@ -48,7 +53,7 @@ class CustomWork extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        name,
+                        fileName,
                         style: TextStyle(
                           color: actualTheme.colorScheme.onError,
                           fontSize: 15.0,

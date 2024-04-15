@@ -7,13 +7,16 @@ import 'package:flutter_timeline_calendar/timeline/provider/instance_provider.da
 import 'package:flutter_timeline_calendar/timeline/utils/calendar_types.dart';
 import 'package:flutter_timeline_calendar/timeline/utils/datetime_extension.dart';
 import 'package:flutter_timeline_calendar/timeline/widget/timeline_calendar.dart';
+import 'package:lovelacevault/screens/editor/word_screen.dart';
 import 'package:lovelacevault/theme/theme.dart';
 import 'package:lovelacevault/widgets/container/custom_work.dart';
 import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
 class EditorScreen extends StatefulWidget {
-  const EditorScreen({Key? key}) : super(key: key);
+  final String fileName; // Agrega esta variable
+
+  const EditorScreen({Key? key, required this.fileName}) : super(key: key);
 
   @override
   State<EditorScreen> createState() => _EditorScreenState();
@@ -62,7 +65,7 @@ class _EditorScreenState extends State<EditorScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 20),
-                  CustomWork(name: 'Tesis del necronomicon', date: '12/03/12')
+                  CustomWork(fileName: 'Tesis del necronomicon', date: '12/03/12')
                 ],
               ),
             ),
@@ -71,7 +74,12 @@ class _EditorScreenState extends State<EditorScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Acción al presionar el botón flotante +
+          Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => WordScreen(fileName: 'Nuevo fichero'),
+  ),
+);
         },
         child: Icon(Icons.add),
       ),
