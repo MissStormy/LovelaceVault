@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  calendar_timeline:
+    dependency: "direct main"
+    description:
+      name: calendar_timeline
+      sha256: "7437ce216a7c579f2f9554f385dd77a3d5c9d15a63bc38d4d155b66302c85fba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
   characters:
     dependency: transitive
     description:
@@ -211,6 +219,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_timeline_calendar:
+    dependency: "direct main"
+    description:
+      name: flutter_timeline_calendar
+      sha256: "224771b407406c2ab68ac56b9ae4d68f75f10f68d21c931b7afa485eb66b57b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.9"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -376,6 +392,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
+  scoped_model:
+    dependency: transitive
+    description:
+      name: scoped_model
+      sha256: "8dacc77cb5de78d5e159d54cab883847491a73dfaa3d28c52f4ec8b0be32645b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  scrollable_positioned_list:
+    dependency: transitive
+    description:
+      name: scrollable_positioned_list
+      sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.8"
   sky_engine:
     dependency: transitive
     description: flutter

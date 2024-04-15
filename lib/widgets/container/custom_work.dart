@@ -14,9 +14,9 @@ class CustomWork extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // NAVEGAR A WORDSCREEN Y PASAR DATOS
-        Navigator.push(
+       /*  Navigator.push(
             context, MaterialPageRoute(builder: (context) => WordScreen()));
-      },
+      */ },
       child: Container(
         margin: EdgeInsets.all(50.0),
         decoration: BoxDecoration(

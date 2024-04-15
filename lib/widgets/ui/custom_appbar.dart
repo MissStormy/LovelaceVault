@@ -23,10 +23,10 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      /* borderRadius: BorderRadius.only(
         bottomRight: Radius.circular(20.0),
         bottomLeft: Radius.circular(20.0),
-      ),
+      ), */
       child: Container(
         color: actualTheme.colorScheme.primary,
         
