@@ -74,7 +74,7 @@ class CustomWork extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 50),
+                SizedBox(width: 80),
                 IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
               ],
             )
