@@ -4,6 +4,7 @@ import 'package:lovelacevault/screens/profile_screen.dart';
 import 'package:lovelacevault/theme/theme.dart';
 import 'package:lovelacevault/widgets/buttons/custom_filter_button.dart';
 import 'package:lovelacevault/widgets/container/custom_resource_view.dart';
+import 'package:lovelacevault/widgets/spacers/h_spacer_10.dart';
 import 'package:lovelacevault/widgets/textfield/custom_searchbar.dart';
 import 'package:lovelacevault/widgets/ui/custom_appbar.dart';
 import 'package:provider/provider.dart';
@@ -136,78 +137,40 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Image.asset('assets/profile.png'),
           ),
         ),
-        body: Expanded(
-            child: SingleChildScrollView(
-                child: Column(children: [
-          SizedBox(
-            height: 5.0,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                bottomLeft: Radius.circular(40.0),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
+        // ------------------- BODY ---------------------
+        body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 5.0,
                 ),
-              ],
-            ),
-            child: CustomSearchBar(
-              onSearch: filterBooks,
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          SizedBox(
-            width: 360.0,
-            child: Container(
-                padding: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: actualTheme.colorScheme.surface,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40.0),
-                    topLeft: Radius.circular(40.0),
+                // ----------------- SEARCHBAR ------------------
+                 CustomSearchBar(
+                    onSearch: filterBooks,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                // CARGAMOS LOS DATOS DE LA TABLA resources Y LOS PONEMOS EN EL TEMPLATE DE LOS RESOURCES
-                // EN CASO DE QUE NO CONSIGA CARGAR, O TARDE, APARECERA UN CIRCULO DE CARGA
-                child: FutureBuilder<List<Resource>>(
+                
+                HSpacer10(),
+
+                // ----------------- RESOURCES LIST ------------------
+                FutureBuilder<List<Resource>>(
                   future: resource.getResources(),
                   builder: (context, snapshot) {
+                    // ------------- LOADING --------------
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
-                      // DETECCION DE ERRORES
+                      // ----------- DETECCION DE ERRORES -----------
                     } else if (snapshot.hasError) {
                       return Center(
                         child: Text("Error: ${snapshot.error}"),
                       );
                     } else {
-                      //CARGAMOS EL SNAPSHOT
+                      // ----------- SNAPSHOT ------------
                       final resources = snapshot.data!;
                       return ListView.builder(
                         shrinkWrap: true,
-                        //physics: const NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: resources.length,
                         itemBuilder: (context, index) {
                           final resource = resources[index];
@@ -216,8 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             author: resource.author,
                             type: resource.type,
                             bytes: resource.bytes,
-                            isChecked:
-                                true, // TODO: CAMBIAR ESTO, YA NO ES NECESARIO
+                            isChecked: true, // TODO: CAMBIAR ESTO, YA NO ES NECESARIO
                             imagePath: resource.imagePath,
                             summary: resource.summary,
                           );
@@ -225,59 +187,59 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                   },
-                )),
-          ),
-          Row(
-            // EL BOTON DE FILTROS PERMITE TOGGLEAR LAS VISTAS DE EXPANDIDO Y CONTRAIDO
-            children: [
-              IconButton(
-                onPressed: toggleFilterExpansion,
-                icon: Icon(Icons.tune),
-              ),
-              AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                // TAMAÑO ABIERTO -> PANTALLA -50 : TAMAÑO CERRADO -> 0
-                width: _isFilterExpanded
-                    ? MediaQuery.of(context).size.width - 50
-                    : 0,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    // FILTRADO POR TIPO
-                    children: [
-                      CustomFilterButton(
-                        text: "Tesis",
-                        onTap: () {
-                          filterBooksByType(ResourceType.Tesis);
-                        },
-                      ),
-                      SizedBox(width: 2.0),
-                      CustomFilterButton(
-                        text: "Libro",
-                        onTap: () {
-                          filterBooksByType(ResourceType.Libro);
-                        },
-                      ),
-                      SizedBox(width: 2.0),
-                      CustomFilterButton(
-                        text: "Recurso",
-                        onTap: () {
-                          filterBooksByType(ResourceType.Recurso);
-                        },
-                      ),
-                      SizedBox(width: 2.0),
-                      CustomFilterButton(
-                        text: "Otros",
-                        onTap: () {
-                          filterBooksByType(ResourceType.Otros);
-                        },
-                      ),
-                    ],
-                  ),
                 ),
-              ),
-            ],
-          ),
-        ]))));
+
+                Row(
+                  // EL BOTON DE FILTROS PERMITE TOGGLEAR LAS VISTAS DE EXPANDIDO Y CONTRAIDO
+                  children: [
+                    IconButton(
+                      onPressed: toggleFilterExpansion,
+                      icon: Icon(Icons.tune),
+                    ),
+                    AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      // TAMAÑO ABIERTO -> PANTALLA -50 : TAMAÑO CERRADO -> 0
+                      width: _isFilterExpanded
+                          ? MediaQuery.of(context).size.width - 50
+                          : 0,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          // FILTRADO POR TIPO
+                          children: [
+                            CustomFilterButton(
+                              text: "Tesis",
+                              onTap: () {
+                                filterBooksByType(ResourceType.Tesis);
+                              },
+                            ),
+                            SizedBox(width: 2.0),
+                            CustomFilterButton(
+                              text: "Libro",
+                              onTap: () {
+                                filterBooksByType(ResourceType.Libro);
+                              },
+                            ),
+                            SizedBox(width: 2.0),
+                            CustomFilterButton(
+                              text: "Recurso",
+                              onTap: () {
+                                filterBooksByType(ResourceType.Recurso);
+                              },
+                            ),
+                            SizedBox(width: 2.0),
+                            CustomFilterButton(
+                              text: "Otros",
+                              onTap: () {
+                                filterBooksByType(ResourceType.Otros);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+        ])));
   }
 }
