@@ -29,7 +29,7 @@ class CustomResource extends StatelessWidget {
     // -------------- GESTURE DETECTOR -------------
     return GestureDetector(
       onTap: () {
-        // NAVEGAR A BOOKSCREEN Y PASAR DATOS
+        // ---------- NAVIGATOR ---------
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -44,11 +44,12 @@ class CustomResource extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.all(5.0),
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         //padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey), 
+          //border: Border.all(color: Colors.grey), 
           borderRadius: BorderRadius.circular(10.0), 
+          color: actualTheme.colorScheme.background.withOpacity(0.4)
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +59,7 @@ class CustomResource extends StatelessWidget {
               height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0), 
+                
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0), 

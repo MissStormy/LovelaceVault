@@ -61,13 +61,13 @@ class ThemeLoader with ChangeNotifier {
     notifyListeners();
   }
 
-  //Light theme: Studying cat
+  //Light theme: Blazing pink
   ThemeData _myLightTheme() {
     return (ThemeData.light().copyWith(
         colorScheme: const ColorScheme(
-          primary: Color(0xFF746c5e),
-          secondary: Color(0xFFaca493),
-          background: Color(0xFFb6b39e),
+          primary: Color(0xFF9b2b0),
+          secondary: Color(0xFF9b4d5a),
+          background: Color(0xFFa9667c),
           surface: Color(0xFFeef2e7),
           onBackground: Color(0xFFc8c3af),
           onSurface: Color(0xFF000000),

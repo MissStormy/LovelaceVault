@@ -25,8 +25,9 @@ class CustomWork extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10.0),
+          //border: Border.all(color: Colors.grey), 
+          borderRadius: BorderRadius.circular(10.0), 
+          color: actualTheme.colorScheme.background.withOpacity(0.4)
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

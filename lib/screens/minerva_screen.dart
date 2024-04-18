@@ -163,6 +163,7 @@ class _MinervaState extends State<Minerva> {
               ],
             ),
           ),
+          SizedBox(height: 80)
         ],
       ),
     );

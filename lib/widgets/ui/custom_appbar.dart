@@ -28,7 +28,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
         bottomLeft: Radius.circular(20.0),
       ), */
       child: Container(
-        color: actualTheme.colorScheme.primary,
+        color: actualTheme.colorScheme.background.withOpacity(0.7),
         
         child: SafeArea(
           child: Container(
@@ -41,7 +41,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                     onPressed: () {
                       Navigator.pop(context); // Navegar hacia atrás cuando se presiona la flecha de retroceso
                     },
-                    icon: Icon(Icons.arrow_back, color: Colors.white),
+                    icon: Icon(Icons.arrow_back, color: actualTheme.colorScheme.onError,),
                   ),
                 if (line1 != null || line2 != null) // Verifica si alguno de los textos no es nulo
                   Padding(
@@ -54,7 +54,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                           Text(
                             line1!,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: actualTheme.colorScheme.onError,
                               fontSize: 18.0, // Tamaño del texto aumentado
                             ),
                           ),
@@ -62,7 +62,7 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
                           Text(
                             line2!,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: actualTheme.colorScheme.onError,
                               fontSize: 20.0, // Tamaño del texto aumentado
                               fontWeight: FontWeight.bold,
                             ),

@@ -106,12 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
           line2: 'User',
           notificationButton: IconButton(
             onPressed: () {
-              // AL PULSAR EL BOTON DE LAS NOTIFICACIONES, SE DESPLIEGA UNA BOTTOM SHEET
+              // -------- BOTTOM SHEET: NOTIFS --------
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
                   return Container(
-                    color: const Color.fromARGB(137, 253, 244, 244),
+                    color: actualTheme.colorScheme.primary,
                     child: ListView.builder(
                       itemCount: 10,
                       itemBuilder: (context, index) {

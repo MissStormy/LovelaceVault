@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/screens/editor/editor_screen.dart';
 import 'package:lovelacevault/screens/home_screen.dart';
-import 'package:lovelacevault/screens/library_screen.dart';
+import 'package:lovelacevault/screens/library/library_screen.dart';
 import 'package:lovelacevault/screens/minerva_screen.dart';
 import 'package:lovelacevault/screens/profile_screen.dart';
 import 'package:lovelacevault/theme/theme.dart';
@@ -18,7 +18,7 @@ class Nexus extends StatefulWidget {
 class _NexusState extends State<Nexus> {
   // VARIABLES
   int _selectedIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
@@ -28,7 +28,9 @@ class _NexusState extends State<Nexus> {
       //  INDEX 0
       HomeScreen(),
       //  INDEX 1
-      EditorScreen(fileName: '',),
+      EditorScreen(
+        fileName: '',
+      ),
       //  INDEX 2
       BookshelfScreen(),
       //  INDEX 3
@@ -38,15 +40,27 @@ class _NexusState extends State<Nexus> {
     ];
 
     return Scaffold(
-      // AL IR CAMBIANDO EL SELECTEDINDEX, SE CAMBIA SOLO EL APPBAR Y EL BODY
-      // MEJORANDO EL RENDIMIENTO DE LA APLICACIÓN
-      body: screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },));
+      backgroundColor: Colors.transparent, // Establece el fondo del Scaffold como transparente
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: screens[_selectedIndex],
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: CustomBottomNavigationBar(
+              currentIndex: _selectedIndex,
+              onTap: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

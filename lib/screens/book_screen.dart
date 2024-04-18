@@ -31,7 +31,9 @@ class _BookScreenState extends State<BookScreen> {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     final darkMode = actualTheme.brightness == Brightness.dark;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: actualTheme.colorScheme.background.withOpacity(0.4),
+      ),
       body: Stack(
         children: [
           // ----------- FONDO -----------
@@ -75,7 +77,7 @@ class _BookScreenState extends State<BookScreen> {
                           onPressed: () {
                             // TODO: Acción al presionar el botón de favorito
                           },
-                          child: Icon(Icons.favorite_border),
+                          child: Icon(Icons.favorite_border, color: actualTheme.colorScheme.onError),
                         ),
                       ),
                     ],
@@ -95,7 +97,7 @@ class _BookScreenState extends State<BookScreen> {
                         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                         child: Container(
                           padding: EdgeInsets.all(20.0),
-                          color: actualTheme.colorScheme.surface.withOpacity(0.5),
+                          color: actualTheme.colorScheme.primary.withOpacity(0.3),
                           child: Center(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,7 +131,8 @@ class _BookScreenState extends State<BookScreen> {
                                       expanded = !expanded;
                                     });
                                   },
-                                  child: Text(expanded ? 'Less' : 'More'),
+                                  
+                                  child: Text(expanded ? 'Less' : 'More', style: TextStyle(color: actualTheme.colorScheme.onError),),
                                 ),
                               ],
                             ),
