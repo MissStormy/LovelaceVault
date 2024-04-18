@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-// ESTA PANTALLA RECOGE LOS DATOS DEL RECURSO ABIERTO
-class BookScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
+
+class BookScreen extends StatefulWidget {
   final String imagePath;
   final String title;
   final String author;
@@ -17,106 +20,159 @@ class BookScreen extends StatelessWidget {
   });
 
   @override
+  _BookScreenState createState() => _BookScreenState();
+}
+
+class _BookScreenState extends State<BookScreen> {
+  bool expanded = false;
+
+  @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
+    final darkMode = actualTheme.brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 10.0),
-              Row(
-                
+      body: Stack(
+        children: [
+          // ----------- FONDO -----------
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: darkMode
+                ? Container(
+                    key: Key('darkModeBg'),
+                    width: double.infinity,
+                    height: double.infinity,
+                    color: Colors.black,
+                    child: Image.asset('assets/bg_dark.jpeg', fit: BoxFit.cover),
+                  )
+                : Container(
+                    key: Key('lightModeBg'),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset('assets/bg.jpeg', fit: BoxFit.cover),
+                  ),
+          ),
+          SingleChildScrollView(
+            child: Center(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
-                  IconButton(
-                    icon: Icon(Icons.favorite_border),
-                    onPressed: () {
-                      // TODO: AL PULSAR TIENE QUE CAMBIAR EL DISEÑO DEL ICONO
-                    },
-                  ),
-                  SizedBox(width: 10.0),
-                  Image.asset(
-                    imagePath,
-                    width: 150,
-                    height: 150,
-                  ),
-                  SizedBox(width: 10.0),
-                  Text(bytes),
-                ],
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: Colors.grey.shade200,
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
-                          ),
+                  SizedBox(height: 10.0),
+                  Stack(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        child: Image.asset(
+                          widget.imagePath,
+                          width: 150,
+                          height: 150,
                         ),
-                        Text(
-                          author,
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        Text(
-                          summary,
-                          maxLines: 10,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: 10.0),
-                        ElevatedButton(
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: ElevatedButton(
                           onPressed: () {
-                            // AL PULSAR, SE EXTENDERA EL TEXTO HASTA EL MAXIMO DE SUS CARACTERES
+                            // TODO: Acción al presionar el botón de favorito
                           },
-                          child: Text('More'),
+                          child: Icon(Icons.favorite_border),
                         ),
-                        SizedBox(height: 10.0),
-                        Container(
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.grey.shade300,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Ejemplar mas cercano'),
-                              SizedBox(width: 10.0),
-                              Row(
-                                children: [
-                                  Text('Localización'),
-                                  IconButton(
-                                    icon: Icon(Icons.map),
-                                    onPressed: () {
-                                      // EXPANSION: CREAR UNA PANTALLA MAPS O QUE TE REDIRECCIONE AL MAPS
-                                    },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Divider(),
+                  Container(
+                    width: MediaQuery.of(context).size.width + 10,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      //color: actualTheme.colorScheme.primary,
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                        child: Container(
+                          padding: EdgeInsets.all(20.0),
+                          color: actualTheme.colorScheme.surface.withOpacity(0.5),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  widget.title,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                    color: actualTheme.colorScheme.onError,
                                   ),
-                                ],
-                              )
-                            ],
+                                ),
+                                Text(
+                                  widget.author,
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    color: actualTheme.colorScheme.onError,
+                                  ),
+                                ),
+                                Divider(),
+                                Text(
+                                  widget.summary,
+                                  maxLines: expanded ? 10 : 5,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: actualTheme.colorScheme.onError,),
+                                ),
+                                SizedBox(height: 10.0),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      expanded = !expanded;
+                                    });
+                                  },
+                                  child: Text(expanded ? 'Less' : 'More'),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Divider(),
+                  SizedBox(height: 10.0),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: actualTheme.colorScheme.surface.withOpacity(0.5),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Ejemplar mas cercano', style: TextStyle(color: actualTheme.colorScheme.error,),),
+                        SizedBox(width: 10.0),
+                        Row(
+                          children: [
+                            Text('Localización'),
+                            IconButton(
+                              icon: Icon(Icons.map),
+                              onPressed: () {
+                                // EXPANSION: CREAR UNA PANTALLA MAPS O QUE TE REDIRECCIONE AL MAPS
+                              },
+                            ),
+                          ],
+                        )
                       ],
                     ),
-                  )),
-            ],
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
+

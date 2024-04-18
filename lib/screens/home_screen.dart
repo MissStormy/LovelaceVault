@@ -138,7 +138,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         // ------------------- BODY ---------------------
-        body: SingleChildScrollView(
+        body: Stack(
+        children: [
+          // Fondo que cubre toda la pantalla
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Image.asset('assets/bg.jpeg', fit: BoxFit.cover),
+          ),
+        
+        SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
@@ -190,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 Row(
-                  // EL BOTON DE FILTROS PERMITE TOGGLEAR LAS VISTAS DE EXPANDIDO Y CONTRAIDO
+                  // ---------- FILTROS ----------
                   children: [
                     IconButton(
                       onPressed: toggleFilterExpansion,
@@ -240,6 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 )
-        ])));
+        ]
+    ))]));
   }
 }

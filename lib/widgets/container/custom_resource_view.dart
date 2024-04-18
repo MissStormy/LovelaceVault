@@ -26,7 +26,7 @@ class CustomResource extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-    // CON EL GESTUREDETECTOR, PODEMOS CONVERTIR EL CONTAINER EN UN BUTTON
+    // -------------- GESTURE DETECTOR -------------
     return GestureDetector(
       onTap: () {
         // NAVEGAR A BOOKSCREEN Y PASAR DATOS
@@ -78,7 +78,7 @@ class CustomResource extends StatelessWidget {
                         fontSize: 15.0, 
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Configura el número máximo de líneas
+                      maxLines: 2, 
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
@@ -114,7 +114,7 @@ class CustomResource extends StatelessWidget {
                     ),
                     SizedBox(height: 4.0),
                     Container(
-                      width: double.infinity, // Asegura que el texto se ajuste al ancho disponible
+                      width: double.infinity, 
                       child: Text(
                         summary,
                         style: TextStyle(
