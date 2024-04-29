@@ -12,6 +12,7 @@ class CustomResource extends StatelessWidget {
   late bool isChecked;
   late String imagePath;
   late String summary;
+  late int? collectionIndex;
 
   CustomResource({
     required this.title,
@@ -20,7 +21,8 @@ class CustomResource extends StatelessWidget {
     required this.bytes,
     required this.isChecked,
     required this.imagePath,
-    required this.summary
+    required this.summary, 
+    this.collectionIndex
   });
 
   @override

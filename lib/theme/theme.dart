@@ -65,12 +65,12 @@ class ThemeLoader with ChangeNotifier {
   ThemeData _myLightTheme() {
     return (ThemeData.light().copyWith(
         colorScheme: const ColorScheme(
-          primary: Color(0xFF9b2b0),
-          secondary: Color(0xFF9b4d5a),
-          background: Color(0xFFa9667c),
-          surface: Color(0xFFeef2e7),
-          onBackground: Color(0xFFc8c3af),
-          onSurface: Color(0xFF000000),
+          primary: Color(0xFF772728),
+          secondary: Color(0xFFe47645),
+          background: Color(0xFFf09f5d),
+          surface: Color(0xFFf4d2af),
+          onBackground: Color(0xFFffeedc),
+          onSurface: Color(0xFFaba543),
           brightness: Brightness.light,
           error: Colors.black,
           onError: Colors.black,
@@ -79,8 +79,8 @@ class ThemeLoader with ChangeNotifier {
         ),
         textTheme: const TextTheme(
             bodyMedium: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Quicksand',
+                fontSize: 15.0,
+                fontFamily: 'Typewriter',
                 color: Color(0xFF0D0D0D)))));
   }
 
@@ -88,12 +88,12 @@ class ThemeLoader with ChangeNotifier {
   ThemeData _myDarkTheme() {
     return (ThemeData.dark().copyWith(
         colorScheme: const ColorScheme(
-          primary: Color(0xFF071424),
-          secondary: Color(0xFF425072),
-          background: Color(0xFF5e6a76),
-          surface: Color(0xFF030e14),
-          onBackground: Color(0xFFf8ae6b),
-          onSurface: Color(0xFFe67538),
+          primary: Color(0xFF060606),
+          secondary: Color(0xFF41251a),
+          background: Color(0xFF973c2d),
+          surface: Color(0xFFb63f1c),
+          onBackground: Color(0xFFd85e23),
+          onSurface: Color(0xFFe5904f),
           brightness: Brightness.dark,
           error: Colors.black,
           onError: Color(0xFFECEFF1),
@@ -102,8 +102,8 @@ class ThemeLoader with ChangeNotifier {
         ),
         textTheme: const TextTheme(
             bodyMedium: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Quicksand',
+                fontSize: 15.0,
+                fontFamily: 'Typewriter',
                 color: Color(0xFFECEFF1)))));
   }
 }

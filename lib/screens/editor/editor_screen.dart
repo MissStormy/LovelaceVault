@@ -65,25 +65,34 @@ class _EditorScreenState extends State<EditorScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 20),
-                  CustomWork(fileName: 'Tesis del necronomicon', date: '12/03/12')
+                  CustomWork(
+                      fileName: 'Tesis del necronomicon', date: '12/03/12')
                 ],
               ),
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => WordScreen(fileName: 'Nuevo fichero'),
-  ),
-);
-        },
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Stack(
+      children: [
+        Positioned(
+          bottom: 100.0, 
+          right: 0.0, 
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WordScreen(fileName: 'Nuevo fichero'),
+                ),
+              );
+            },
+            child: Icon(Icons.add),
+          ),
+        ),
+      ],
+    ),
+      
     );
   }
 
@@ -117,7 +126,6 @@ class _EditorScreenState extends State<EditorScreen> {
           headerTextColor: actualTheme.colorScheme.onError,
           navigationColor: actualTheme.colorScheme.onError,
           calendarIconColor: actualTheme.colorScheme.onError),
-          
       onChangeDateTime: (dateTime) {
         print("Date Change $dateTime");
         selectedDateTime = dateTime;

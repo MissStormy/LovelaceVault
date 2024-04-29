@@ -1,17 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/data/resource.dart';
+import 'package:lovelacevault/widgets/container/custom_resource_view.dart';
+import 'package:lovelacevault/widgets/textfield/custom_searchbar.dart';
 
 class ListScreen extends StatefulWidget {
-  const ListScreen({super.key});
+  const ListScreen({Key? key}) : super(key: key);
 
   @override
   State<ListScreen> createState() => _ListScreenState();
 }
 
 class _ListScreenState extends State<ListScreen> {
+  final Resource resource = Resource();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Placeholder(),
+      body: Column(
+        children: [
+          SizedBox(height: 5.0),
+          CustomSearchBar(
+            onSearch: (String) {
+              // Lógica para búsqueda
+            },
+          ),
+          SizedBox(height: 10.0),
+          Expanded(
+            child: FutureBuilder<List<Resource>>(
+              future: resource.getResources(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Error: ${snapshot.error}"),
+                  );
+                } else {
+                  final resources = snapshot.data!;
+                  return ListView.builder(
+                    itemCount: resources.length,
+                    itemBuilder: (context, index) {
+                      final resource = resources[index];
+                      // Aquí asignamos cada recurso a una colección
+                      final collectionIndex = index % 3; // Suponiendo 3 colecciones
+                      return CustomResource(
+                        title: resource.title,
+                        author: resource.author,
+                        type: resource.type,
+                        bytes: resource.bytes,
+                        isChecked: true, // TODO: Cambiar esto si es necesario
+                        imagePath: resource.imagePath,
+                        summary: resource.summary,
+                        collectionIndex: collectionIndex, // Asignamos la colección
+                      );
+                    },
+                  );
+                }
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

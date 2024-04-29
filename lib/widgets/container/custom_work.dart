@@ -52,12 +52,13 @@ class CustomWork extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         fileName,
                         style: TextStyle(
                           color: actualTheme.colorScheme.onError,
-                          fontSize: 15.0,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 1,
@@ -66,7 +67,7 @@ class CustomWork extends StatelessWidget {
                       Text(
                         ('Ultima edicion: $date'),
                         style: TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 10.0,
                           color: actualTheme.colorScheme.onError,
                         ),
                         maxLines: 1,
@@ -76,7 +77,8 @@ class CustomWork extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 5),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+                
               ],
             )
           ],

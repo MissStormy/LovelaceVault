@@ -59,6 +59,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: Typewriter
+      fonts:
+        - asset: assets/fonts/JMH_Typewriter.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -69,6 +73,7 @@ flutter:
   assets:
     - assets/
     - assets/covers/
+    - assets/fonts/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

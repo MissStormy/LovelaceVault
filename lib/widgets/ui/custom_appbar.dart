@@ -36,56 +36,56 @@ class CustomRoundedAppBar extends StatelessWidget implements PreferredSizeWidget
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (showBackButton) // Mostrar la flecha de retroceso si showBackButton es verdadero
+                if (showBackButton) 
                   IconButton(
                     onPressed: () {
-                      Navigator.pop(context); // Navegar hacia atrás cuando se presiona la flecha de retroceso
+                      Navigator.pop(context); 
                     },
                     icon: Icon(Icons.arrow_back, color: actualTheme.colorScheme.onError,),
                   ),
-                if (line1 != null || line2 != null) // Verifica si alguno de los textos no es nulo
+                if (line1 != null || line2 != null) 
                   Padding(
-                    padding: const EdgeInsets.only(left: 25.0), // Ajusta el espacio a la izquierda del texto
+                    padding: const EdgeInsets.only(left: 25.0), 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (line1 != null) // Verifica si line1 no es nulo
+                        if (line1 != null) 
                           Text(
                             line1!,
                             style: TextStyle(
                               color: actualTheme.colorScheme.onError,
-                              fontSize: 18.0, // Tamaño del texto aumentado
+                              fontSize: 18.0, 
                             ),
                           ),
-                        if (line2 != null) // Verifica si line2 no es nulo
+                        if (line2 != null) 
                           Text(
                             line2!,
                             style: TextStyle(
                               color: actualTheme.colorScheme.onError,
-                              fontSize: 20.0, // Tamaño del texto aumentado
+                              fontSize: 20.0, 
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                       ],
                     ),
                   ),
-                  notificationButton != null ? Padding( // Verifica si el botón de notificaciones no es nulo
-                  padding: const EdgeInsets.only(left: 50.0), // Ajusta el espacio a ambos lados del botón de notificaciones
+                  notificationButton != null ? Padding( 
+                  padding: const EdgeInsets.only(left: 10.0), 
                   child: SizedBox(
-                    width: 50.0, // Ancho del botón de notificaciones
-                    height: 50.0, // Alto del botón de notificaciones
-                    child: notificationButton, // Muestra el botón de notificaciones
+                    width: 50.0, 
+                    height: 50.0, 
+                    child: notificationButton, 
                   ),
                 ) : SizedBox(),
                 action != null ? Padding(
-                  padding: const EdgeInsets.only(right: 8.0), // Ajusta el espacio a la derecha del icono
+                  padding: const EdgeInsets.only(right: 8.0), 
                   child: SizedBox(
-                    width: 50.0, // Ancho del icono reducido
-                    height: 50.0, // Alto del icono reducido
+                    width: 50.0, 
+                    height: 50.0, 
                     child: action,
                   ),
-                ) : SizedBox(), // Muestra el widget action si está presente, o un SizedBox si no lo está
+                ) : SizedBox(), 
               ],
             ),
           ),

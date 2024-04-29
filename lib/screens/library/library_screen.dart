@@ -50,9 +50,9 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
       body: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(left: isDrawerOpen ? 50.0 : 0.0),
+            margin: EdgeInsets.only(left: isDrawerOpen ? 60.0 : 0.0),
             decoration: BoxDecoration(
-              color: actualTheme.colorScheme.primary,
+              //color: actualTheme.colorScheme.background,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.0),
                 bottomLeft: Radius.circular(40.0),
@@ -74,17 +74,17 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
             left: isDrawerOpen ? 0.0 : -500.0,
             child: Container(
               width: 60.0,
-              color: actualTheme.colorScheme.primary,
+              //color: actualTheme.colorScheme.background,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 150,),
                   ListTile(
-                    tileColor: _selectedIndex == 0 ? actualTheme.colorScheme.background.withOpacity(0.5) : null,
+                    tileColor: _selectedIndex == 0 ? actualTheme.colorScheme.background : null,
                     title: RotatedBox(
                       quarterTurns: 3,
-                      child: Text('Colecciones'),
+                      child: Text('Colecciones', style: TextStyle(color: actualTheme.colorScheme.onError),),
                     ),
                     onTap: () {
                       setState(() {
@@ -96,31 +96,31 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
                   ),
                   SizedBox(height: 50,),
                   ListTile(
-                    tileColor: _selectedIndex == 1 ? Colors.blue.withOpacity(0.2) : null,
+                    tileColor: _selectedIndex == 1 ? actualTheme.colorScheme.background : null,
                     title: RotatedBox(
                       quarterTurns: 3,
-                      child: Text('Lista'),
+                      child: Text('Lista', style: TextStyle(color: actualTheme.colorScheme.onError)),
                     ),
                     onTap: () {
                       setState(() {
                         selectedOption = 'Lista';
                         isDrawerOpen = false;
-                        _selectedIndex = 1; // Establecer el índice seleccionado
+                        _selectedIndex = 1; 
                       });
                     },
                   ),
                   SizedBox(height: 50,),
                   ListTile(
-                    tileColor: _selectedIndex == 2 ? Colors.blue.withOpacity(0.2) : null,
+                    tileColor: _selectedIndex == 2 ? actualTheme.colorScheme.background : null,
                     title: RotatedBox(
                       quarterTurns: 3,
-                      child: Text('Crear'),
+                      child: Text('Crear', style: TextStyle(color: actualTheme.colorScheme.onError)),
                     ),
                     onTap: () {
                       setState(() {
                         selectedOption = 'Crear';
                         isDrawerOpen = false;
-                        _selectedIndex = 2; // Establecer el índice seleccionado
+                        _selectedIndex = 2; 
                       });
                     },
                   ),

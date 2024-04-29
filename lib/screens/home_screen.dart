@@ -138,26 +138,69 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         // ------------------- BODY ---------------------
-        body: Stack(
-        children: [
-          // Fondo que cubre toda la pantalla
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Image.asset('assets/bg.jpeg', fit: BoxFit.cover),
+        body: Stack(children: [
+          Row(
+            // ---------- FILTROS ----------
+            children: [
+              IconButton(
+                onPressed: toggleFilterExpansion,
+                icon: Icon(Icons.tune),
+              ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                // TAMAÑO ABIERTO -> PANTALLA -50 : TAMAÑO CERRADO -> 0
+                width: _isFilterExpanded
+                    ? MediaQuery.of(context).size.width - 50
+                    : 0,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    // FILTRADO POR TIPO
+                    children: [
+                      CustomFilterButton(
+                        text: "Tesis",
+                        onTap: () {
+                          filterBooksByType(ResourceType.Tesis);
+                        },
+                      ),
+                      SizedBox(width: 2.0),
+                      CustomFilterButton(
+                        text: "Libro",
+                        onTap: () {
+                          filterBooksByType(ResourceType.Libro);
+                        },
+                      ),
+                      SizedBox(width: 2.0),
+                      CustomFilterButton(
+                        text: "Recurso",
+                        onTap: () {
+                          filterBooksByType(ResourceType.Recurso);
+                        },
+                      ),
+                      SizedBox(width: 2.0),
+                      CustomFilterButton(
+                        text: "Otros",
+                        onTap: () {
+                          filterBooksByType(ResourceType.Otros);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        
-        SingleChildScrollView(
+          SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
                   height: 5.0,
                 ),
                 // ----------------- SEARCHBAR ------------------
-                 CustomSearchBar(
-                    onSearch: filterBooks,
-                  ),
-                
+                CustomSearchBar(
+                  onSearch: filterBooks,
+                ),
+
                 HSpacer10(),
 
                 // ----------------- RESOURCES LIST ------------------
@@ -188,7 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             author: resource.author,
                             type: resource.type,
                             bytes: resource.bytes,
-                            isChecked: true, // TODO: CAMBIAR ESTO, YA NO ES NECESARIO
+                            isChecked:
+                                true, // TODO: CAMBIAR ESTO, YA NO ES NECESARIO
                             imagePath: resource.imagePath,
                             summary: resource.summary,
                           );
@@ -197,59 +241,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                   },
                 ),
-
-                Row(
-                  // ---------- FILTROS ----------
-                  children: [
-                    IconButton(
-                      onPressed: toggleFilterExpansion,
-                      icon: Icon(Icons.tune),
-                    ),
-                    AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      // TAMAÑO ABIERTO -> PANTALLA -50 : TAMAÑO CERRADO -> 0
-                      width: _isFilterExpanded
-                          ? MediaQuery.of(context).size.width - 50
-                          : 0,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          // FILTRADO POR TIPO
-                          children: [
-                            CustomFilterButton(
-                              text: "Tesis",
-                              onTap: () {
-                                filterBooksByType(ResourceType.Tesis);
-                              },
-                            ),
-                            SizedBox(width: 2.0),
-                            CustomFilterButton(
-                              text: "Libro",
-                              onTap: () {
-                                filterBooksByType(ResourceType.Libro);
-                              },
-                            ),
-                            SizedBox(width: 2.0),
-                            CustomFilterButton(
-                              text: "Recurso",
-                              onTap: () {
-                                filterBooksByType(ResourceType.Recurso);
-                              },
-                            ),
-                            SizedBox(width: 2.0),
-                            CustomFilterButton(
-                              text: "Otros",
-                              onTap: () {
-                                filterBooksByType(ResourceType.Otros);
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-        ]
-    ))]));
+              ],
+            ),
+          )
+        ]));
   }
 }
