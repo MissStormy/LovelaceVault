@@ -23,7 +23,7 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
   void initState() {
     super.initState();
     // Establecer el primer elemento seleccionado por defecto
-    _selectedIndex = 0;
+    _selectedIndex = 1;
   }
 
   @override

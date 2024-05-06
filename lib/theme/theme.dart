@@ -61,7 +61,7 @@ class ThemeLoader with ChangeNotifier {
     notifyListeners();
   }
 
-  //Light theme: Blazing pink
+  //Light theme: Spooky cat
   ThemeData _myLightTheme() {
     return (ThemeData.light().copyWith(
         colorScheme: const ColorScheme(

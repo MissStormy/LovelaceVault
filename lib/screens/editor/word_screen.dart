@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/data/datamanager.dart';
 import 'package:lovelacevault/data/documento.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class WordScreen extends StatefulWidget {
   final String fileName;
@@ -20,6 +22,7 @@ class _WordScreenState extends State<WordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     String fileName = widget.fileName;
     return Scaffold(
       appBar: AppBar(
@@ -48,10 +51,10 @@ class _WordScreenState extends State<WordScreen> {
               return [
                 PopupMenuItem(
                   child: ListTile(
-                    //leading: Icon(Icons.more_vert),
+                    
                     title: Text('Más opciones'),
                     onTap: () {
-                      // Implementa la lógica para más opciones
+                      
                     },
                   ),
                 ),
@@ -72,12 +75,13 @@ class _WordScreenState extends State<WordScreen> {
               child: TextField(
                 controller: _textEditingController,
                 enabled:
-                    !_readOnly, // Habilita o deshabilita la edición del TextField
-                maxLines: null, // Permite múltiples líneas de texto
+                    !_readOnly, 
+                maxLines: null, 
                 textAlign: _alignment,
+                style: TextStyle(color: actualTheme.colorScheme.onError),
                 decoration: InputDecoration(
                   hintText: 'Escribe aquí...',
-                  border: InputBorder.none, // Elimina el borde del TextField
+                  border: InputBorder.none, 
                 ),
               ),
             ),

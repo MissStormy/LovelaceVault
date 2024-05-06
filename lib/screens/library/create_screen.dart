@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
-class CreateScreen extends StatelessWidget {
+class CreateScreen extends StatefulWidget {
   const CreateScreen({Key? key}) : super(key: key);
 
+  @override
+  _CreateScreenState createState() => _CreateScreenState();
+}
+
+class _CreateScreenState extends State<CreateScreen> {
+  late String defaultValue;
   
+  @override
+  void initState() {
+    super.initState();
+    defaultValue = 'Libro';
+  }
 
   @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
+
     final List<DropdownMenuItem<String>> items = [
-    DropdownMenuItem(value: 'Libro', child: Text('Libro')),
-    DropdownMenuItem(value: 'Tesis', child: Text('Tesis')),
-    DropdownMenuItem(value: 'Recurso', child: Text('Recurso')),
-    DropdownMenuItem(value: 'Otro', child: Text('Otro')),
-  ];
+      DropdownMenuItem(value: 'Libro', child: Text('Libro')),
+      DropdownMenuItem(value: 'Tesis', child: Text('Tesis')),
+      DropdownMenuItem(value: 'Recurso', child: Text('Recurso')),
+      DropdownMenuItem(value: 'Otro', child: Text('Otro')),
+    ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Crear'),
-      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,13 +46,20 @@ class CreateScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(labelText: 'Fecha'),
+                    decoration: InputDecoration(labelText: 'Fecha de edición'),
                   ),
                 ),
                 SizedBox(width: 16.0),
                 DropdownButton<String>(
+                  value: defaultValue, 
                   items: items,
-                  onChanged: (String? value) {},
+                  iconEnabledColor: actualTheme.colorScheme.onError, 
+                  style: TextStyle(color: actualTheme.colorScheme.onError),
+                  onChanged: (String? value) {
+                    setState(() {
+                      defaultValue = value!; // Actualiza el valor por defecto con el valor seleccionado
+                    });
+                  },
                 ),
               ],
             ),
@@ -50,20 +69,23 @@ class CreateScreen extends StatelessWidget {
               maxLines: 3,
             ),
             SizedBox(height: 32.0),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Crear'),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Icon(Icons.close),
-                ),
-              ],
-            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: Icon(Icons.add),
+                    label: Text('Crear'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Icon(Icons.close),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

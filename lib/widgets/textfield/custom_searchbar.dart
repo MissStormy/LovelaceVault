@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lovelacevault/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class CustomSearchBar extends StatefulWidget {
   final void Function(String) onSearch;
@@ -29,6 +31,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -40,10 +43,13 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           Expanded(
             child: TextField(
               controller: _searchController,
+              style: TextStyle(color: actualTheme.colorScheme.onError),
               decoration: InputDecoration(
                 hintText: 'Search',
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                hintStyle: TextStyle(color: actualTheme.colorScheme.onError),
+                
               ),
               onSubmitted: widget.onSearch,
             ),
