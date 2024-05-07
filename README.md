@@ -32,8 +32,9 @@ El diseño de la aplicación se ha realizado a mano en su totalidad, mediante Fl
 #### Etapa inicial
 ![Screenshot_2024-04-10-10-11-14-56_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/fdee08d3-2c4d-4edb-b757-f89e4071c6cc) ![Screenshot_2024-04-10-10-11-25-04_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/23e3e629-4244-41ce-91ce-24c0af57c2ae)
 
+#### Diseño final
+![Screenshot_2024-04-10-10-11-14-56_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/94abc6ae-1c2a-4685-b132-962e56639f66) ![Screenshot_2024-05-07-09-33-38-10_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/3c74c216-fe09-45f1-b31b-994cd43cb33a) ![Screenshot_2024-05-07-09-33-46-90_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/3b9eb632-896c-455e-838c-55acd7ce96a2) ![Screenshot_2024-05-07-09-33-55-38_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/fc20188c-5f42-47d1-b084-457219f8bb41) 
 
-
-
+![Screenshot_2024-05-07-09-34-02-00_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/738d69d1-95c6-4393-b6b5-3e41d3a85090) ![Screenshot_2024-05-07-09-34-19-21_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/207994f1-c031-4fa2-b776-5f9fa6f5c934) ![Screenshot_2024-05-07-09-34-25-75_b6226bf0d6899c960be23daf854e17a9](https://github.com/MissStormy/LovelaceVault/assets/111749007/d7ba5704-7b4e-4b36-8bca-b217e9465a25)
 
 
