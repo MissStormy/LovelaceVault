@@ -40,7 +40,7 @@ class _NexusState extends State<Nexus> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.transparent, // Establece el fondo del Scaffold como transparente
+      backgroundColor: Colors.transparent, 
       body: Stack(
         children: [
           Positioned.fill(

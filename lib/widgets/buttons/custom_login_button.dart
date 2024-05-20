@@ -16,10 +16,10 @@ class CustomLoginButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.orangeAccent, // Color del borde de los CustomTextField
-          foregroundColor: Colors.white, // Color del texto
+          backgroundColor: Colors.orangeAccent, 
+          foregroundColor: Colors.white, 
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20), // Borde redondeado
+            borderRadius: BorderRadius.circular(20), 
           ),
         ),
         child: Text(text),

@@ -63,7 +63,7 @@ class _MinervaState extends State<Minerva> {
       if (qaPair != null) {
         _messages.add({'message': qaPair['answer'], 'isMinerva': true});
       } else {
-        // Si no hay coincidencia, mostrar un mensaje predeterminado
+        // SI NO HAY COINCIDENCIA, MOSTRAR UN MENSAJE PREDETERMINADO
         _messages.add({
           'message': 'Lo siento, no comprendo tu pregunta.',
           'isMinerva': true

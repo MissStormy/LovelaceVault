@@ -16,10 +16,10 @@ class CustomTextField extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         border: Border.all(
-          color: Colors.orangeAccent.withOpacity(0.8), // Color naranja más intenso
+          color: Colors.orangeAccent.withOpacity(0.8), 
           width: 2.0, // Ancho del borde
         ),
-        color: Colors.white.withOpacity(0.9), // Fondo blanco con menos opacidad
+        color: Colors.white.withOpacity(0.9), 
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -31,19 +31,19 @@ class CustomTextField extends StatelessWidget {
             border: InputBorder.none,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.transparent, // Transparente para que coincida con el color de fondo
+                color: Colors.transparent, 
               ),
               borderRadius: BorderRadius.circular(20.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.orangeAccent.withOpacity(0.2), // Color naranja más intenso
+                color: Colors.orangeAccent.withOpacity(0.2), 
                 width: 2.0, // Ancho del borde
               ),
               borderRadius: BorderRadius.circular(20.0),
             ),
-            filled: true, // Establecer el TextField como lleno
-            fillColor: Colors.white.withOpacity(0.2), // Fondo blanco con menos opacidad
+            filled: true, 
+            fillColor: Colors.white.withOpacity(0.2),
           ),
         ),
       ),

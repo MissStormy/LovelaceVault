@@ -21,10 +21,11 @@ class _ListScreenState extends State<ListScreen> {
           SizedBox(height: 5.0),
           CustomSearchBar(
             onSearch: (String) {
-              // Lógica para búsqueda
+              
             },
           ),
           SizedBox(height: 10.0),
+          // ------------ CARGA DE RECURSOS --------------
           Expanded(
             child: FutureBuilder<List<Resource>>(
               future: resource.getResources(),
@@ -43,8 +44,7 @@ class _ListScreenState extends State<ListScreen> {
                     itemCount: resources.length,
                     itemBuilder: (context, index) {
                       final resource = resources[index];
-                      // Aquí asignamos cada recurso a una colección
-                      final collectionIndex = index % 3; // Suponiendo 3 colecciones
+                      final collectionIndex = index % 3; 
                       return CustomResource(
                         title: resource.title,
                         author: resource.author,
@@ -53,7 +53,7 @@ class _ListScreenState extends State<ListScreen> {
                         isChecked: true, // TODO: Cambiar esto si es necesario
                         imagePath: resource.imagePath,
                         summary: resource.summary,
-                        collectionIndex: collectionIndex, // Asignamos la colección
+                        collectionIndex: collectionIndex, 
                       );
                     },
                   );

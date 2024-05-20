@@ -31,22 +31,22 @@ class _LoginPageState extends State<LoginPage> {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.white
-                    .withOpacity(0.0), // Transparente en la parte superior
+                    .withOpacity(0.0),
                 Colors.white
-                    .withOpacity(0.5), // Opacidad máxima en la parte inferior
+                    .withOpacity(0.5),
               ],
             ),
           ),
-          alignment: Alignment.center, // Centra la imagen en el contenedor
+          alignment: Alignment.center, 
           child: Column(
             mainAxisAlignment: MainAxisAlignment
-                .end, // Posiciona los elementos al final del espacio disponible
+                .end, 
             crossAxisAlignment: CrossAxisAlignment
-                .center, // Alinea los elementos al centro horizontalmente
+                .center, 
 
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 50), // Espacio adicional en la parte inferior
+                padding: EdgeInsets.only(bottom: 50), 
                 child: Container(
                   height: 100, // Altura de la imagen
                   width: 100, // Ancho de la imagen
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController, hintText: 'Password'),
                   CustomLoginButton(text: 'Sign in', onPressed: (){
                     _navigateToNexusPage(context);
-                  
+                // ---------- EXPANSION: USUARIOS ---------
               /* CustomLoginButton(text: 'Sign in', onPressed: () async{
                String username = _usernameController.text;
                 String password = _passwordController.text;

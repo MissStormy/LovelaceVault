@@ -57,7 +57,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   style: TextStyle(color: actualTheme.colorScheme.onError),
                   onChanged: (String? value) {
                     setState(() {
-                      defaultValue = value!; // Actualiza el valor por defecto con el valor seleccionado
+                      defaultValue = value!; 
                     });
                   },
                 ),

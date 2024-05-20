@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:lovelacevault/theme/theme.dart';
-import 'package:lovelacevault/widgets/spacers/h_spacer_10.dart';
 import 'package:provider/provider.dart';
 
 class BookScreen extends StatefulWidget {
@@ -30,17 +29,31 @@ class _BookScreenState extends State<BookScreen> {
   @override
   Widget build(BuildContext context) {
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
-    
+    final darkMode = actualTheme.brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: actualTheme.colorScheme.background.withOpacity(0.4),
-        title: Text(widget.title),
       ),
+      // ------------ BODY --------------
       body: Stack(
         children: [
           // ----------- FONDO -----------
-          Container(
-            color: actualTheme.colorScheme.onBackground,
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: darkMode
+                ? Container(
+                    key: Key('darkModeBg'),
+                    width: double.infinity,
+                    height: double.infinity,
+                    color: Colors.black,
+                    child: Image.asset('assets/bg_dark.jpeg', fit: BoxFit.cover),
+                  )
+                : Container(
+                    key: Key('lightModeBg'),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset('assets/bg.jpeg', fit: BoxFit.cover),
+                  ),
           ),
           SingleChildScrollView(
             child: Center(
@@ -72,12 +85,12 @@ class _BookScreenState extends State<BookScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Divider(),
+                  // ------------- ESPECIFICACIONES ------------               
                   Container(
                     width: MediaQuery.of(context).size.width + 10,
-                    
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      
+                      //color: actualTheme.colorScheme.primary,
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                     child: ClipRRect(
@@ -132,8 +145,9 @@ class _BookScreenState extends State<BookScreen> {
                   ),
                   Divider(),
                   SizedBox(height: 10.0),
+                  // ------- FUTURA EXPANSION: ZONA DE COMENTARIOS Y LOCALIZACION ------
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 30.0),
+                    margin: EdgeInsets.symmetric(horizontal: 20.0),
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
@@ -158,23 +172,6 @@ class _BookScreenState extends State<BookScreen> {
                       ],
                     ),
                   ),
-                  HSpacer10(),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    padding: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: actualTheme.colorScheme.surface.withOpacity(0.5),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Comentarios', style: TextStyle(color: actualTheme.colorScheme.error,),),
-                        
-                      ],
-                    ),
-                  ),
-                  HSpacer10(),
                 ],
               ),
             ),

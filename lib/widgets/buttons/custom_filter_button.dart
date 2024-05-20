@@ -26,13 +26,13 @@ class _CustomFilterButtonState extends State<CustomFilterButton> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _isSelected = !_isSelected; // Cambia el estado de selección
+          _isSelected = !_isSelected; 
         });
-        widget.onTap(); // Ejecuta la función onTap proporcionada
+        widget.onTap(); 
       },
       child: Container(
         decoration: BoxDecoration(
-          color: _isSelected ?  actualTheme.colorScheme.background : null , // Cambia el color de fondo al ser seleccionado
+          color: _isSelected ?  actualTheme.colorScheme.background : null , 
           borderRadius: BorderRadius.circular(20.0),
           
         ),

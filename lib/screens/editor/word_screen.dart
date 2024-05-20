@@ -31,13 +31,13 @@ class _WordScreenState extends State<WordScreen> {
           IconButton(
             icon: Icon(Icons.undo),
             onPressed: () {
-              // Implementa la lógica para deshacer
+              // TODO: LOGICA DESHACER
             },
           ),
           IconButton(
             icon: Icon(Icons.redo),
             onPressed: () {
-              // Implementa la lógica para rehacer
+              // TODO: LOGICA REHACER
             },
           ),
           IconButton(
@@ -65,7 +65,7 @@ class _WordScreenState extends State<WordScreen> {
       ),
       body: GestureDetector(
         onTap: () {
-          // Cuando se toca la pantalla, oculta el teclado
+          // OCULTA EL TECLADO
           FocusScope.of(context).unfocus();
         },
         child: Stack(
@@ -95,19 +95,19 @@ class _WordScreenState extends State<WordScreen> {
             IconButton(
               icon: Icon(Icons.format_bold),
               onPressed: () {
-                // Implementa la lógica para cambiar a negrita
+                // TODO: CAMBIAR A NEGRITA
               },
             ),
             IconButton(
               icon: Icon(Icons.format_italic),
               onPressed: () {
-                // Implementa la lógica para cambiar a cursiva
+                // TODO: CAMBIAR A CURSIVA
               },
             ),
             IconButton(
               icon: Icon(Icons.format_underline),
               onPressed: () {
-                // Implementa la lógica para subrayar
+                // TODO: CAMBIAR A SUBRAYADO
               },
             ),
             PopupMenuButton(
@@ -155,12 +155,12 @@ class _WordScreenState extends State<WordScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            // Cambia el estado de solo lectura al contrario
+            // CAMBIA EL ESTADO DE LECTURA A EDICION
             _readOnly = !_readOnly;
 
-            // Guarda los datos cuando se cambia de modo de edición a modo de lectura
+            // GUARDA DATOS AL PULSAR SOBRE EL BOTON EDICION
             if (!_readOnly) {
-              _saveDocumentData(); // Llama a la función para guardar los datos
+              _saveDocumentData(); 
             }
           });
         },
@@ -169,7 +169,7 @@ class _WordScreenState extends State<WordScreen> {
     );
   }
 
-// Función para guardar los datos del documento en formato JSON
+// FUNCION PARA GUARDAR LOS DATOS DEL DOCUMENTO EN FORMATO JSON TODO:
   void _saveDocumentData() async {
     try {
       final document = Document(
@@ -180,20 +180,20 @@ class _WordScreenState extends State<WordScreen> {
         tamanyoFuente: _selectedFontSize,
       );
 
-      // Carga los documentos existentes
+      // CARGA LOS DOCUMENTOS YA EXISTENTES
       final List<Document> documents = await DataManager.loadDocuments();
 
-      // Busca el documento actual por nombre y actualiza sus datos si existe
+      // BUSCA EL DOCUMENTO POR NOMBRE 
       final index =
           documents.indexWhere((doc) => doc.nombre == document.nombre);
       if (index != -1) {
         documents[index] = document;
       } else {
-        // Si el documento no existe, agrégalo a la lista
+        // SI NO EXISTE, SE AGREGA
         documents.add(document);
       }
 
-      // Guarda la lista actualizada de documentos
+      // GUARDA LA LISTA ACTUAL
       await DataManager.saveDocuments(documents);
     } catch (e) {
       print('Error al guardar los datos del documento: $e');
@@ -240,7 +240,7 @@ class _WordScreenState extends State<WordScreen> {
                     );
                   }).toList(),
                   onChanged: (String? value) {
-                    // Implementa la lógica para cambiar el formato
+                    
                   },
                 ),
                 SizedBox(height: 16.0),
@@ -254,7 +254,7 @@ class _WordScreenState extends State<WordScreen> {
                     );
                   }).toList(),
                   onChanged: (String? value) {
-                    // Implementa la lógica para cambiar la fuente
+                    
                   },
                 ),
                 SizedBox(height: 16.0),
@@ -267,7 +267,7 @@ class _WordScreenState extends State<WordScreen> {
                     );
                   }).toList(),
                   onChanged: (double? value) {
-                    // Implementa la lógica para cambiar el tamaño de la fuente
+                   
                   },
                 ),
               ],

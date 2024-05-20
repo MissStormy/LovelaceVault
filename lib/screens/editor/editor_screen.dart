@@ -74,6 +74,7 @@ class _EditorScreenState extends State<EditorScreen> {
         ],
       ),
       floatingActionButton: Stack(
+        // ------------ CREACION FICHEROS ---------------
       children: [
         Positioned(
           bottom: 100.0, 

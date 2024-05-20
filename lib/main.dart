@@ -25,10 +25,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // Cargamos la aplicación
   @override
   Widget build(BuildContext context) {
-     //Load the actual theme
+     // Cargamos el tema
     final actualTheme = Provider.of<ThemeLoader>(context).actualTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,

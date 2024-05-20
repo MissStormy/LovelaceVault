@@ -13,11 +13,11 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool switchValue1 =
-      false; // Variable para controlar el estado del primer switch
+      false; 
   bool switchValue2 =
-      false; // Variable para controlar el estado del segundo switch
+      false; 
   String selectedLanguage =
-      'Español'; // Variable para almacenar el idioma seleccionado
+      'Español'; 
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         
       ),
+      // ---------- BODY ------------
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(left: 10.0),
@@ -41,19 +42,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Imagen de perfil
+                // ---------- IMAGEN DE PERFIL ------------
                 GestureDetector(
                   onTap: () {
-                    // Acción al pulsar sobre la imagen de perfil
+                    // TODO: CAMBIO DE PERFIL AL PULSAR
                   },
                   child: CircleAvatar(
                     radius: 50.0,
                     backgroundColor: Colors.grey,
-                    backgroundImage: null, // Aquí iría la imagen de perfil
+                    backgroundImage: null, 
                   ),
                 ),
                 SizedBox(height: 10.0),
-                // Username
+              
                 Text(
                   "Username",
                   textAlign: TextAlign.center,
@@ -63,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                // Container con opciones
+                // ----------- OPCIONES ------------
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -79,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               title: 'Editar nombre',
                               initialValue: 'Valor inicial',
                               onSubmit: (newValue) {
-                                // Lógica para guardar el nuevo valor en la base de datos
+                                // TODO: GUARDAR NUEVOS DATOS
                               },
                             );
                           },
@@ -95,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               title: 'Editar contraseña',
                               initialValue: 'Valor inicial',
                               onSubmit: (newValue) {
-                                // Lógica para guardar el nuevo valor en la base de datos
+                                // TODO: GUARDAR NUEVOS DATOS
                               },
                             );
                           },
@@ -110,13 +111,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               title: 'Editar correo',
                               initialValue: 'Valor inicial',
                               onSubmit: (newValue) {
-                                // Lógica para guardar el nuevo valor en la base de datos
+                                // TODO: GUARDAR NUEVOS DATOS
                               },
                             );
                           },
                         );
                       }),
                       Divider(),
+                      // -------- SWITCH CAMBIO TEMA ----------
                       buildOptionRow(
                         Icons.circle,
                         "Cambiar tema",
@@ -138,6 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       ),
                       Divider(),
+                      // -------- NOTIFICACIONES ---------
                       buildOptionRow(Icons.notifications, "Notificaciones",
                           isSwitch: true,
                           switchValue: switchValue2, onChanged: (value) {
@@ -145,23 +148,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           switchValue2 = value;
                         });
                       }, onTap: () {
-                        // Acción al pulsar sobre "Notificaciones"
+                        // TODO: CAMBIAR NOTIFICACIONES
                       }),
                       Divider(),
                       buildOptionRow(Icons.language, "Idioma", isDropdown: true,
                           onTap: () {
-                        // Acción al pulsar sobre "Idioma"
+                        // TODO: CAMBIO DE IDIOMA
                       }),
                       Divider(),
                       buildOptionRow(Icons.logout, "Cerrar sesión",
                           isLogout: true, onTap: () {
-                        // Acción al pulsar sobre "Cerrar sesión"
+                        // TODO: CERRAR SESION
                       }),
                     ],
                   ),
                 ),
                 SizedBox(height: 20.0),
-                // Créditos y copyright
+                // ------------- CREDITOS Y COPYRIGHT ------------------
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -179,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Acción al pulsar sobre "Copyright"
+                        
                       },
                       child: Text(
                         "©",
@@ -245,7 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         trailing: IconButton(
           icon: Icon(Icons.power_settings_new),
           onPressed: () {
-            // Acción al pulsar sobre el botón de cerrar sesión
+            
           },
         ),
       );
@@ -257,7 +260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         trailing: IconButton(
           icon: Icon(Icons.arrow_forward_ios),
           onPressed: () {
-            // Acción al pulsar sobre el botón de flecha
+            
           },
         ),
       );

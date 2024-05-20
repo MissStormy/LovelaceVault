@@ -22,7 +22,6 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
   @override
   void initState() {
     super.initState();
-    // Establecer el primer elemento seleccionado por defecto
     _selectedIndex = 1;
   }
 
@@ -35,6 +34,7 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
       CreateScreen()
     ];
     return Scaffold(
+      // ----------- DRAWER -----------
       appBar: AppBar(
         title: Text('Biblioteca'),
         backgroundColor: actualTheme.colorScheme.primary,
@@ -68,6 +68,7 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
                 });
               },
             ),
+            // ---------- ANIMACION DE APERTURA -------------
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
