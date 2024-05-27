@@ -27,6 +27,7 @@ El público objetivo:
 Al ser una herramienta específica para la creación de tesis, bibliografías, etc,  se centrará principalmente en tener una usabilidad sencilla y herramientas potentes, tales como la creación automática de citas y un editor incorporado para no tener que desplazarse a un ordenador en caso de no disponer de uno.
 ### [Enlace a documentación tecnica](https://docs.google.com/document/d/1-cpIOuktWK0bu-V5mSNs7vZ_jdkNhN_2/edit?usp=sharing&ouid=110264346140332608664&rtpof=true&sd=true)
 ### [Enlace a pdf de documentación técnica V1.0](https://drive.google.com/file/d/1o03XjpGheDfEBOYBDkiregGke9cXU3A2/view?usp=sharing)
+### [Enlace a presentación Powerpoint](https://docs.google.com/presentation/d/1n9WaqQNuY5lIimEDV7De0CSkkIT7ws0fXcS3o7hU6YM/edit?usp=sharing)
 ### Diseño
 El diseño de la aplicación se ha realizado a mano en su totalidad, mediante Flutter. Todo widget ha sido customizado y las paletas han sido elegidas especificamente para esta aplicación.
 
